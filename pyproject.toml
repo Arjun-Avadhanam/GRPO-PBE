@@ -1,0 +1,21 @@
+[project]
+name = "grpo-pbe"
+version = "0.1.0"
+description = "GRPO training for programming-by-example data transformations"
+requires-python = ">=3.11"
+dependencies = [
+    "torch>=2.4",
+    "unsloth",
+    "trl",
+    "transformers",
+    "datasets",
+    "peft",
+    "accelerate",
+    "bitsandbytes",
+    "wandb",
+    "pydantic>=2.0",
+    "pytest",
+]
+
+[project.optional-dependencies]
+dev = ["ruff", "ipykernel", "matplotlib", "seaborn"]
