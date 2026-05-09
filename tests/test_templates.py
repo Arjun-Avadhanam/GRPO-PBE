@@ -91,3 +91,13 @@ def test_all_date_templates_valid():
 def test_all_numeric_templates_valid():
     from grpo_pbe.templates.numeric_ops import NUMERIC_TEMPLATES
     _validate_template_list(NUMERIC_TEMPLATES)
+
+
+def test_all_list_templates_valid():
+    from grpo_pbe.templates.list_ops import LIST_TEMPLATES
+    _validate_template_list(LIST_TEMPLATES)
+
+
+def test_all_dict_templates_valid():
+    from grpo_pbe.templates.dict_ops import DICT_TEMPLATES
+    _validate_template_list(DICT_TEMPLATES)
