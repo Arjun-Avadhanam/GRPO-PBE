@@ -101,3 +101,8 @@ def test_all_list_templates_valid():
 def test_all_dict_templates_valid():
     from grpo_pbe.templates.dict_ops import DICT_TEMPLATES
     _validate_template_list(DICT_TEMPLATES)
+
+
+def test_all_chained_templates_valid():
+    from grpo_pbe.templates.chained_ops import CHAINED_TEMPLATES
+    _validate_template_list(CHAINED_TEMPLATES)
