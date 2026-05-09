@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "grpo-pbe"
 version = "0.1.0"
@@ -19,3 +23,6 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["ruff", "ipykernel", "matplotlib", "seaborn"]
+
+[tool.setuptools.packages.find]
+include = ["grpo_pbe*"]
