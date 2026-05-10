@@ -10,8 +10,13 @@ class TransformTemplate(ABC):
         ...
 
     def generate_example(self, n_demo: int = 3, n_test: int = 2) -> dict:
-        cases = [self.generate_case() for _ in range(n_demo + n_test)]
-        gold_code = cases[0]["gold_code"]
+        first = self.generate_case()
+        gold_code = first["gold_code"]
+        cases = [first]
+        while len(cases) < n_demo + n_test:
+            case = self.generate_case()
+            if case["gold_code"] == gold_code:
+                cases.append(case)
         return {
             "template_name": self.name,
             "difficulty": self.difficulty,
