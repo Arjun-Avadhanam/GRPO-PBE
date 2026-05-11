@@ -10,8 +10,13 @@ class SwapKeysValues(TransformTemplate):
     difficulty = "medium"
 
     def generate_case(self) -> dict:
-        keys = random.sample(string.ascii_lowercase, random.randint(3, 5))
-        vals = random.sample(range(1, 20), len(keys))
+        # Both keys and values are strings so JSON persistence preserves types
+        # (JSON dict keys are always strings; int keys would silently become strings on load).
+        value_pool = ["alpha", "beta", "gamma", "delta", "epsilon",
+                      "zeta", "eta", "theta", "iota", "kappa"]
+        n = random.randint(3, 5)
+        keys = random.sample(string.ascii_lowercase, n)
+        vals = random.sample(value_pool, n)
         d = dict(zip(keys, vals))
         return {
             "input": d,

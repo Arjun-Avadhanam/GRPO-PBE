@@ -106,3 +106,33 @@ def test_all_dict_templates_valid():
 def test_all_chained_templates_valid():
     from grpo_pbe.templates.chained_ops import CHAINED_TEMPLATES
     _validate_template_list(CHAINED_TEMPLATES)
+
+
+def test_all_templates_survive_json_roundtrip():
+    """Persisted (input, output) must equal freshly executed (input, gold_code).
+
+    JSON loses type information for int dict keys, tuples (→ list), and sets.
+    A template whose gold output trips on these is unscorable after persistence:
+    the reward function compares JSON-loaded `test["output"]` against `execute(gold_code, test["input"])`,
+    and the model can never match.
+    """
+    import json
+    from grpo_pbe.templates import ALL_TEMPLATES
+
+    exec_globals = {"__builtins__": __builtins__, "re": re_module, "datetime": datetime}
+    failures = []
+    for template in ALL_TEMPLATES:
+        for _ in range(5):
+            case = template.generate_case()
+            roundtripped = json.loads(json.dumps(case))
+            fn = eval(f"lambda x: {roundtripped['gold_code']}", exec_globals)
+            result = fn(roundtripped["input"])
+            if result != roundtripped["output"]:
+                failures.append((template.name, roundtripped["input"],
+                                 roundtripped["output"], result))
+                break  # one failure per template is enough
+
+    assert not failures, "JSON-roundtrip inconsistencies:\n" + "\n".join(
+        f"  {n}: input={i!r} gold_output={o!r} executed={r!r}"
+        for n, i, o, r in failures
+    )
