@@ -4,10 +4,12 @@ import os
 # HF CloudFront edge); standard HF downloads are slower but reliable.
 os.environ.setdefault("HF_HUB_ENABLE_HF_TRANSFER", "0")
 
+# Unsloth must be imported BEFORE trl/transformers/peft so its monkey-patches apply.
+from unsloth import FastLanguageModel
+
 import wandb
 from datasets import Dataset
 from trl import SFTConfig, SFTTrainer
-from unsloth import FastLanguageModel
 
 from grpo_pbe.data_generator import load_dataset
 

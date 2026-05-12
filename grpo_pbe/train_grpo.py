@@ -4,11 +4,13 @@ import os
 # HF CloudFront edge); standard HF downloads are slower but reliable.
 os.environ.setdefault("HF_HUB_ENABLE_HF_TRANSFER", "0")
 
+# Unsloth must be imported BEFORE trl/transformers/peft so its monkey-patches apply.
+from unsloth import FastLanguageModel
+
 import torch
 import wandb
 from datasets import Dataset
 from trl import GRPOConfig, GRPOTrainer
-from unsloth import FastLanguageModel
 
 from grpo_pbe.data_generator import load_dataset
 from grpo_pbe.reward import compute_reward
@@ -96,17 +98,19 @@ def main():
         use_gradient_checkpointing="unsloth",
     )
 
-    # Training config
+    # Training config.
+    # Step budget: 600 steps at ~30 sec/step (without vLLM) = ~5 hours.
+    # Plan calls for 500-800 steps; this lands mid-range.
     training_args = GRPOConfig(
         output_dir=OUTPUT_DIR,
-        num_train_epochs=1,
+        max_steps=600,
         per_device_train_batch_size=4,
         gradient_accumulation_steps=1,
         num_generations=4,  # group size G
         max_prompt_length=512,
         max_completion_length=512,
         learning_rate=5e-6,
-        kl_coef=0.04,
+        beta=0.04,  # KL coefficient (renamed from kl_coef in TRL 0.23+)
         optim="adamw_8bit",
         logging_steps=10,
         save_steps=200,

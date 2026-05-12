@@ -1,7 +1,12 @@
 """Evaluation harness: run inference on the held-out set, compute metrics."""
 import json
+import os
 from collections import defaultdict
 from pathlib import Path
+
+# hf_transfer's parallel-chunk downloader deadlocks on some networks (WSL +
+# HF CloudFront edge); standard HF downloads are slower but reliable.
+os.environ.setdefault("HF_HUB_ENABLE_HF_TRANSFER", "0")
 
 # torch and unsloth are heavy and touch CUDA on import — load them lazily
 # inside the functions that need them so `compute_metrics` stays unit-testable
