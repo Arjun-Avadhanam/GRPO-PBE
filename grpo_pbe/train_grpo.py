@@ -1,4 +1,9 @@
 """GRPO training script using Unsloth + TRL."""
+import os
+# hf_transfer's parallel-chunk downloader deadlocks on some networks (WSL +
+# HF CloudFront edge); standard HF downloads are slower but reliable.
+os.environ.setdefault("HF_HUB_ENABLE_HF_TRANSFER", "0")
+
 import torch
 import wandb
 from datasets import Dataset
@@ -9,7 +14,13 @@ from grpo_pbe.data_generator import load_dataset
 from grpo_pbe.reward import compute_reward
 
 # --- Config ---
-MODEL_NAME = "unsloth/Qwen2.5-1.5B-Instruct"
+# Local pre-quantized snapshot (downloaded via:
+#   huggingface-cli download unsloth/qwen2.5-1.5b-instruct-unsloth-bnb-4bit \
+#       --local-dir models/qwen2.5-1.5b-bnb4
+# or via plain curl if HF's downloader stalls — both produce the same bytes).
+# Loading from a local dir bypasses Unsloth's HF Hub discovery, which hangs on
+# some networks (WSL → CloudFront LFS edge).
+MODEL_NAME = "models/qwen2.5-1.5b-bnb4"
 MAX_SEQ_LENGTH = 1024
 LORA_R = 16
 LORA_ALPHA = 16

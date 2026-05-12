@@ -1,4 +1,9 @@
 """SFT baseline training script using Unsloth + TRL."""
+import os
+# hf_transfer's parallel-chunk downloader deadlocks on some networks (WSL +
+# HF CloudFront edge); standard HF downloads are slower but reliable.
+os.environ.setdefault("HF_HUB_ENABLE_HF_TRANSFER", "0")
+
 import wandb
 from datasets import Dataset
 from trl import SFTConfig, SFTTrainer
@@ -7,7 +12,10 @@ from unsloth import FastLanguageModel
 from grpo_pbe.data_generator import load_dataset
 
 # --- Config (same model/LoRA as GRPO for fair comparison) ---
-MODEL_NAME = "unsloth/Qwen2.5-1.5B-Instruct"
+# Local pre-quantized snapshot (see train_grpo.py for the download command).
+# Loading from a local dir bypasses Unsloth's HF Hub discovery, which hangs on
+# some networks (WSL → CloudFront LFS edge).
+MODEL_NAME = "models/qwen2.5-1.5b-bnb4"
 MAX_SEQ_LENGTH = 1024
 LORA_R = 16
 LORA_ALPHA = 16
