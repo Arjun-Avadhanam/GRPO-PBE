@@ -9,3 +9,5 @@ wandb/
 dist/
 unsloth_compiled_cache/
 models/
+.env
+logs/
