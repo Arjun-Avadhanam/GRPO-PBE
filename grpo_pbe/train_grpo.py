@@ -126,7 +126,7 @@ def main():
         "lora_r": LORA_R,
         "lora_alpha": LORA_ALPHA,
         "group_size": training_args.num_generations,
-        "kl_coef": training_args.kl_coef,
+        "beta": training_args.beta,  # KL coefficient (renamed from kl_coef in TRL 0.23+)
         "lr": training_args.learning_rate,
         "max_completion_length": training_args.max_completion_length,
     })
