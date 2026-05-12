@@ -1,7 +1,4 @@
 """GRPO training script using Unsloth + TRL."""
-import os
-os.environ["UNSLOTH_VLLM_STANDBY"] = "1"  # memory-efficient GRPO with vLLM
-
 import torch
 import wandb
 from datasets import Dataset
@@ -68,13 +65,14 @@ def main():
     hf_dataset = Dataset.from_dict({"prompt": [ex["prompt"] for ex in train_data]})
     hf_dataset = hf_dataset.map(make_conversation)
 
-    # Load model with Unsloth
+    # Load model with Unsloth.
+    # fast_inference (vLLM) is disabled: vllm 0.20+ ships cu130-only wheels,
+    # incompatible with our CUDA-12.9 driver. Without vLLM, rollouts use HF
+    # generate (~2-3x slower) but training is otherwise identical.
     model, tokenizer = FastLanguageModel.from_pretrained(
         MODEL_NAME,
         max_seq_length=MAX_SEQ_LENGTH,
         load_in_4bit=True,
-        fast_inference=True,  # vLLM for faster generation
-        gpu_memory_utilization=0.6,  # conservative for 8GB 4060
     )
     model = FastLanguageModel.get_peft_model(
         model,

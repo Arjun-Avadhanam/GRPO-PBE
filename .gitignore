@@ -7,3 +7,4 @@ checkpoints/
 wandb/
 *.egg-info/
 dist/
+unsloth_compiled_cache/
