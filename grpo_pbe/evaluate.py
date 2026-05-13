@@ -153,6 +153,9 @@ def run_inference(
             "think_length": len(parsed.think) if parsed.think else 0,
             "code": code,
             "gold_code": example["gold_code"],
+            # Saved so the JSON can be re-graded later without GPU work and
+            # without lossy template-matching against the original eval set.
+            "tests": example["tests"],
         })
 
         if (i + 1) % progress_every == 0:
