@@ -1,6 +1,7 @@
 """Evaluation harness: run inference on the held-out set, compute metrics."""
 import json
 import os
+import re
 from collections import defaultdict
 from pathlib import Path
 
@@ -12,7 +13,8 @@ os.environ.setdefault("HF_HUB_ENABLE_HF_TRANSFER", "0")
 # inside the functions that need them so `compute_metrics` stays unit-testable
 # without triggering CUDA initialisation.
 from grpo_pbe.data_generator import load_dataset
-from grpo_pbe.reward import compute_reward, parse_response
+from grpo_pbe.reward import parse_response
+from grpo_pbe.sandbox import execute_code
 
 
 SYSTEM_PROMPT = (
@@ -23,14 +25,49 @@ SYSTEM_PROMPT = (
 )
 
 
+_CODE_RE = re.compile(r"<code>(.*?)</code>", re.DOTALL)
+
+
+def extract_code_lenient(text: str) -> str | None:
+    """Extract the first <code>...</code> body from text, regardless of <think>.
+
+    Training-time `compute_reward` requires BOTH <think> and <code> tags so that
+    GRPO is pushed to produce structured reasoning. For *evaluation* we just
+    want to know whether the model produced an executable expression that
+    solves the task — even SFT (trained to emit <code> only, no <think>) should
+    be scored fairly.
+    """
+    m = _CODE_RE.search(text)
+    return m.group(1).strip() if m else None
+
+
+def _outputs_match(predicted, expected) -> bool:
+    if isinstance(expected, float) and isinstance(predicted, float):
+        return abs(predicted - expected) < 1e-6
+    return predicted == expected
+
+
+def code_passes_all_tests(code: str | None, tests: list[dict]) -> bool:
+    """Run `code` (as `lambda x: <code>`) against every held-out test."""
+    if not code or not tests:
+        return False
+    for t in tests:
+        result = execute_code(code, t["input"])
+        if not (result.success and _outputs_match(result.output, t["output"])):
+            return False
+    return True
+
+
 def compute_metrics(results: list[dict]) -> dict:
     """Compute accuracy metrics from evaluation results.
 
     Args:
         results: list of dicts with "correct" (bool) and "difficulty" keys.
+            Optionally "format_valid" (bool) for strict-format compliance.
 
     Returns:
-        dict with overall_accuracy and per-difficulty accuracies.
+        dict with overall_accuracy and per-difficulty accuracies, plus
+        format_compliance if "format_valid" is present in any result.
         Per-difficulty keys are only present for difficulties that appear in `results`.
     """
     if not results:
@@ -45,6 +82,11 @@ def compute_metrics(results: list[dict]) -> dict:
     }
     for diff, vals in by_difficulty.items():
         metrics[f"{diff}_accuracy"] = sum(vals) / len(vals)
+
+    if any("format_valid" in r for r in results):
+        metrics["format_compliance"] = (
+            sum(r.get("format_valid", False) for r in results) / len(results)
+        )
     return metrics
 
 
@@ -92,18 +134,24 @@ def run_inference(
             outputs[0][inputs["input_ids"].shape[1]:],
             skip_special_tokens=True,
         )
-        reward = compute_reward(response, example["tests"])
+
+        # Lenient code extraction: accept <code>...</code> with or without <think>.
+        # SFT was trained to emit only <code>; scoring it under the strict
+        # training-time format would unfairly zero it out.
+        code = extract_code_lenient(response)
+        correct = code_passes_all_tests(code, example["tests"])
+
+        # Strict format check (both tags) tracked separately as format_compliance.
         parsed = parse_response(response)
 
         results.append({
             "template_name": example["template_name"],
             "difficulty": example["difficulty"],
-            # All held-out tests must pass: reward >= 1.0 means correctness=1.0
-            "correct": reward >= 1.0,
-            "reward": reward,
+            "correct": correct,
+            "format_valid": parsed.format_valid,
             "response": response,
             "think_length": len(parsed.think) if parsed.think else 0,
-            "code": parsed.code,
+            "code": code,
             "gold_code": example["gold_code"],
         })
 
