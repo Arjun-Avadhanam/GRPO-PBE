@@ -1,0 +1,5574 @@
+{
+  "metrics": {
+    "overall_accuracy": 0.005,
+    "medium_accuracy": 0.0,
+    "easy_accuracy": 0.011235955056179775,
+    "hard_accuracy": 0.0,
+    "format_compliance": 1.0,
+    "mean_think_length": 118.605
+  },
+  "results": [
+    {
+      "template_name": "sort_by_length",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show an order of elements being reversed and concatenated.</think>\n\n<code>x[::-1] + x</code>",
+      "think_length": 77,
+      "code": "x[::-1] + x",
+      "gold_code": "sorted(x, key=len)",
+      "tests": [
+        {
+          "input": [
+            "jrshgd",
+            "yz",
+            "uud",
+            "tgjbjcwtgx",
+            "embupxsi",
+            "gjcrhobk"
+          ],
+          "output": [
+            "yz",
+            "uud",
+            "jrshgd",
+            "embupxsi",
+            "gjcrhobk",
+            "tgjbjcwtgx"
+          ]
+        },
+        {
+          "input": [
+            "slgchhtq",
+            "fnhlcimnb",
+            "vgkpqk",
+            "ygtblxn"
+          ],
+          "output": [
+            "vgkpqk",
+            "ygtblxn",
+            "slgchhtq",
+            "fnhlcimnb"
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "sort_by_length",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that each string is transformed into its reverse order.</think>\n\n<code>x[::-1]</code>",
+      "think_length": 79,
+      "code": "x[::-1]",
+      "gold_code": "sorted(x, key=len)",
+      "tests": [
+        {
+          "input": [
+            "towmjan",
+            "qgwoc",
+            "bzat",
+            "frhoqouik"
+          ],
+          "output": [
+            "bzat",
+            "qgwoc",
+            "towmjan",
+            "frhoqouik"
+          ]
+        },
+        {
+          "input": [
+            "zl",
+            "hwwlautfu",
+            "rndspstq",
+            "drkver",
+            "g",
+            "iya"
+          ],
+          "output": [
+            "g",
+            "zl",
+            "iya",
+            "drkver",
+            "rndspstq",
+            "hwwlautfu"
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "filter_positive",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show an alternating pattern of positive and negative numbers. We need to separate the positive and negative numbers and sort them accordingly.</think>\n\n<code>\ndef transform(x):\n    # Separate positive and negative numbers\n    pos = sorted([num for num in x if num > 0])\n    neg = sorted([num for num in x if num <= 0])\n\n    # Combine the results into one list\n    return pos + neg\n\ntransform([-11, -5, -16, -17, -9, 5]) \n</code>",
+      "think_length": 161,
+      "code": "def transform(x):\n    # Separate positive and negative numbers\n    pos = sorted([num for num in x if num > 0])\n    neg = sorted([num for num in x if num <= 0])\n\n    # Combine the results into one list\n    return pos + neg\n\ntransform([-11, -5, -16, -17, -9, 5])",
+      "gold_code": "[n for n in x if n > 0]",
+      "tests": [
+        {
+          "input": [
+            0,
+            11,
+            -2,
+            10,
+            -4,
+            -2,
+            18
+          ],
+          "output": [
+            11,
+            10,
+            18
+          ]
+        },
+        {
+          "input": [
+            5,
+            5,
+            11,
+            -6,
+            0,
+            -11
+          ],
+          "output": [
+            5,
+            5,
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "sort_list",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show a pattern where each element is replaced by its absolute value and sorted in descending order.</think>\n\n<code>\ndef transform(x):\n    return sorted([abs(i) for i in x], reverse=True)\n</code>",
+      "think_length": 118,
+      "code": "def transform(x):\n    return sorted([abs(i) for i in x], reverse=True)",
+      "gold_code": "sorted(x)",
+      "tests": [
+        {
+          "input": [
+            -36,
+            -2,
+            -29,
+            -14,
+            -33,
+            27,
+            46
+          ],
+          "output": [
+            -36,
+            -33,
+            -29,
+            -14,
+            -2,
+            27,
+            46
+          ]
+        },
+        {
+          "input": [
+            -23,
+            17,
+            -47,
+            -36,
+            35
+          ],
+          "output": [
+            -47,
+            -36,
+            -23,
+            17,
+            35
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "percentage_format",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to convert numbers into percentages by multiplying them by 100 and adding '%' at the end.</think>\n\n<code>x * 100 + '%'</code>",
+      "think_length": 126,
+      "code": "x * 100 + '%'",
+      "gold_code": "f'{x * 100:.1f}%'",
+      "tests": [
+        {
+          "input": 0.9129,
+          "output": "91.3%"
+        },
+        {
+          "input": 0.6114,
+          "output": "61.1%"
+        }
+      ]
+    },
+    {
+      "template_name": "replace_digits_hash",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>\nTo transform the input string into the desired format, we need to pad each character with '#' until it reaches at least 5 characters long. This can be achieved by iterating through each character and appending '#', ensuring that the length of the resulting string is at least 5 characters.\n</think>\n\n<code>\n```python\nlen(x) * ['#' + x[:5]]\n```\n</code>",
+      "think_length": 289,
+      "code": "```python\nlen(x) * ['#' + x[:5]]\n```",
+      "gold_code": "re.sub(r'\\d', '#', x)",
+      "tests": [
+        {
+          "input": "jpznembxkv4786",
+          "output": "jpznembxkv####"
+        },
+        {
+          "input": "xwqmd919xt75",
+          "output": "xwqmd###xt##"
+        }
+      ]
+    },
+    {
+      "template_name": "percentage_format",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to round the number and convert it into a percentage format.</think>\n\n<code>x * 100 = x</code>\n<code>str(x) + '%' = str(x)</code>",
+      "think_length": 97,
+      "code": "x * 100 = x",
+      "gold_code": "f'{x * 100:.1f}%'",
+      "tests": [
+        {
+          "input": 0.9992,
+          "output": "99.9%"
+        },
+        {
+          "input": 0.0997,
+          "output": "10.0%"
+        }
+      ]
+    },
+    {
+      "template_name": "float_to_currency",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves formatting numbers into currency format by adding commas and a dollar sign.</think>\n\n<code>str(x).replace(',', ' ').strip('$')</code>",
+      "think_length": 93,
+      "code": "str(x).replace(',', ' ').strip('$')",
+      "gold_code": "f'${x:,.2f}'",
+      "tests": [
+        {
+          "input": 1785.46,
+          "output": "$1,785.46"
+        },
+        {
+          "input": 3096.59,
+          "output": "$3,096.59"
+        }
+      ]
+    },
+    {
+      "template_name": "uppercase_strings",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be converting each string into uppercase letters followed by lowercase letters.</think>\n\n<code>x.upper().lower()</code>",
+      "think_length": 100,
+      "code": "x.upper().lower()",
+      "gold_code": "[s.upper() for s in x]",
+      "tests": [
+        {
+          "input": [
+            "rtvri",
+            "xwqitxf",
+            "ypp",
+            "ktsu"
+          ],
+          "output": [
+            "RTVRI",
+            "XWQITXF",
+            "YPP",
+            "KTSU"
+          ]
+        },
+        {
+          "input": [
+            "ehtkffj",
+            "ncfl",
+            "lwzgtfw",
+            "kqkti",
+            "tqb",
+            "ias"
+          ],
+          "output": [
+            "EHTKFFJ",
+            "NCFL",
+            "LWZGTFW",
+            "KQKTI",
+            "TQB",
+            "IAS"
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "round_to_n",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given numbers are all rounded at the same place (to two decimal places). We can achieve this by rounding the number to two decimal places.</think>\n\n<code>round(x, 2)</code>",
+      "think_length": 142,
+      "code": "round(x, 2)",
+      "gold_code": "round(x, 1)",
+      "tests": [
+        {
+          "input": 176.594104,
+          "output": 176.6
+        },
+        {
+          "input": 632.058819,
+          "output": 632.1
+        }
+      ]
+    },
+    {
+      "template_name": "extract_sort_dedup_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be rearranging words while keeping certain characters fixed.</think>\n<code>x.split(' ').reverse().join('')</code>",
+      "think_length": 81,
+      "code": "x.split(' ').reverse().join('')",
+      "gold_code": "' '.join(sorted(set(w.lower() for w in x.split())))",
+      "tests": [
+        {
+          "input": "nmlkuy PHFBIQ NBFVF PTRBH phfbiq phfbiq nbfvf",
+          "output": "nbfvf nmlkuy phfbiq ptrbh"
+        },
+        {
+          "input": "docrb ZHR DOCRB vwq docrb vwq docrb docrb DOCRB",
+          "output": "docrb vwq zhr"
+        }
+      ]
+    },
+    {
+      "template_name": "int_to_hex",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be that each digit is replaced by its corresponding letter from A to F (where 10 = A, 11 = B, ..., 15 = E, 16 = F). We can achieve this by converting the number to a string and replacing each character with its ASCII value modulo 16.</think>\n\n<code>x = str(x)\nresult = ''.join(chr(ord(c) % 16 + 65) for c in x)\nreturn result</code>",
+      "think_length": 254,
+      "code": "x = str(x)\nresult = ''.join(chr(ord(c) % 16 + 65) for c in x)\nreturn result",
+      "gold_code": "hex(x)[2:]",
+      "tests": [
+        {
+          "input": 5756,
+          "output": "167c"
+        },
+        {
+          "input": 60478,
+          "output": "ec3e"
+        }
+      ]
+    },
+    {
+      "template_name": "title_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>I need to replace each character in the string with its corresponding uppercase letter.</think>\n<code>x.upper()</code>",
+      "think_length": 87,
+      "code": "x.upper()",
+      "gold_code": "x.title()",
+      "tests": [
+        {
+          "input": "mocl lkzd rvj",
+          "output": "Mocl Lkzd Rvj"
+        },
+        {
+          "input": "tgct nnn kaqboc",
+          "output": "Tgct Nnn Kaqboc"
+        }
+      ]
+    },
+    {
+      "template_name": "int_to_hex",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be that each number is split into two parts and concatenated in reverse order.</think>\n\n<code>x // 1000 + x % 1000</code>",
+      "think_length": 99,
+      "code": "x // 1000 + x % 1000",
+      "gold_code": "hex(x)[2:]",
+      "tests": [
+        {
+          "input": 26974,
+          "output": "695e"
+        },
+        {
+          "input": 13819,
+          "output": "35fb"
+        }
+      ]
+    },
+    {
+      "template_name": "split_filter_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves replacing spaces and commas with vertical bars (`|`). We need to iterate through each character of the string and replace spaces and commas with a vertical bar.</think>\n\n<code>\ndef transform_string(x):\n    result = \"\"\n    for char in x:\n        if char == \" \" or char == \",\":\n            result += \"|\"\n        else:\n            result += char\n    return result\n</code>",
+      "think_length": 178,
+      "code": "def transform_string(x):\n    result = \"\"\n    for char in x:\n        if char == \" \" or char == \",\":\n            result += \"|\"\n        else:\n            result += char\n    return result",
+      "gold_code": "' | '.join(s.strip() for s in x.split(',') if s.strip())",
+      "tests": [
+        {
+          "input": "urtmmj, vsoac ,taqq,",
+          "output": "urtmmj | vsoac | taqq"
+        },
+        {
+          "input": " wgscx ,kixu,hdlka,iu,xn",
+          "output": "wgscx | kixu | hdlka | iu | xn"
+        }
+      ]
+    },
+    {
+      "template_name": "percentage_format",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to format numbers into percentages and include commas for thousands separators.</think>\n\n<code>x * 100.0</code>",
+      "think_length": 116,
+      "code": "x * 100.0",
+      "gold_code": "f'{x * 100:.1f}%'",
+      "tests": [
+        {
+          "input": 0.2989,
+          "output": "29.9%"
+        },
+        {
+          "input": 0.6089,
+          "output": "60.9%"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_email",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be extracting the email address from the string after '@'. We can split the string by '@', take the second part (indexing starts at 0), and join it back together.</think>\n\n<code>x.split('@')[1].split(' ')[-1]</code>",
+      "think_length": 183,
+      "code": "x.split('@')[1].split(' ')[-1]",
+      "gold_code": "re.search(r'[\\w.+-]+@[\\w-]+\\.[\\w.]+', x).group()",
+      "tests": [
+        {
+          "input": "XblnHq yrkuho@bsqu.org end",
+          "output": "yrkuho@bsqu.org"
+        },
+        {
+          "input": "tBaccpbLntHuPpZQst jqbq@ovu.net end",
+          "output": "jqbq@ovu.net"
+        }
+      ]
+    },
+    {
+      "template_name": "swap_keys_values",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves reversing the keys and values of the dictionary.</think>\n<code>{**{v: k for v, k in x.items()}}</code>",
+      "think_length": 66,
+      "code": "{**{v: k for v, k in x.items()}}",
+      "gold_code": "{v: k for k, v in x.items()}",
+      "tests": [
+        {
+          "input": {
+            "r": "alpha",
+            "i": "beta",
+            "c": "theta"
+          },
+          "output": {
+            "alpha": "r",
+            "beta": "i",
+            "theta": "c"
+          }
+        },
+        {
+          "input": {
+            "l": "kappa",
+            "r": "zeta",
+            "a": "eta",
+            "w": "iota",
+            "i": "delta"
+          },
+          "output": {
+            "kappa": "l",
+            "zeta": "r",
+            "eta": "a",
+            "iota": "w",
+            "delta": "i"
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "date_dmy_to_iso",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>First, we need to extract the day, month, and year from the date string. We can do this by splitting the string at '/' and taking the first three elements of each list.</think>\n\n<code>x.split('/')[0] + '-' + x.split('/')[1] + '-' + x.split('/')[2]</code>",
+      "think_length": 168,
+      "code": "x.split('/')[0] + '-' + x.split('/')[1] + '-' + x.split('/')[2]",
+      "gold_code": "datetime.datetime.strptime(x, '%d/%m/%Y').strftime('%Y-%m-%d')",
+      "tests": [
+        {
+          "input": "25/02/2023",
+          "output": "2023-02-25"
+        },
+        {
+          "input": "21/10/2022",
+          "output": "2022-10-21"
+        }
+      ]
+    },
+    {
+      "template_name": "deduplicate",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be sorting the array in descending order and removing duplicates.</think>\n\n<code>x.sort(reverse=True).setdefault(None)</code>",
+      "think_length": 86,
+      "code": "x.sort(reverse=True).setdefault(None)",
+      "gold_code": "list(dict.fromkeys(x))",
+      "tests": [
+        {
+          "input": [
+            6,
+            6,
+            5,
+            4,
+            2,
+            1
+          ],
+          "output": [
+            6,
+            2,
+            4,
+            1,
+            5
+          ]
+        },
+        {
+          "input": [
+            4,
+            3,
+            5,
+            4,
+            5,
+            7,
+            5,
+            3,
+            2
+          ],
+          "output": [
+            4,
+            3,
+            5,
+            7,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "filter_map_reduce",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples suggest a pattern where each number is multiplied by its position in the list and then summed up.</think>\n\n<code>x * (len(x) - x.index(x))</code>",
+      "think_length": 116,
+      "code": "x * (len(x) - x.index(x))",
+      "gold_code": "sum(n ** 2 for n in x if n % 2 == 0)",
+      "tests": [
+        {
+          "input": [
+            16,
+            1,
+            5,
+            15,
+            10
+          ],
+          "output": 356
+        },
+        {
+          "input": [
+            9,
+            9,
+            4,
+            18,
+            3,
+            14,
+            9,
+            5
+          ],
+          "output": 536
+        }
+      ]
+    },
+    {
+      "template_name": "format_dict_entries",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves transforming each key-value pair from the dictionary into a semicolon-separated string format.</think>\n\n<code>\ntransformed_dict = {key: value for key, value in x.items()}\noutput_string = '; '.join([f\"{key}={value}\" for key, value in transformed_dict.items()])\n</code>",
+      "think_length": 112,
+      "code": "transformed_dict = {key: value for key, value in x.items()}\noutput_string = '; '.join([f\"{key}={value}\" for key, value in transformed_dict.items()])",
+      "gold_code": "'; '.join(f'{k}={v}' for k, v in x.items())",
+      "tests": [
+        {
+          "input": {
+            "dept": "yvo",
+            "name": "lix",
+            "age": "daxirp",
+            "role": "byjw"
+          },
+          "output": "dept=yvo; name=lix; age=daxirp; role=byjw"
+        },
+        {
+          "input": {
+            "age": "rznmxo",
+            "role": "sbhdje",
+            "city": "qpxith",
+            "dept": "buh",
+            "name": "fqz"
+          },
+          "output": "age=rznmxo; role=sbhdje; city=qpxith; dept=buh; name=fqz"
+        }
+      ]
+    },
+    {
+      "template_name": "split_filter_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves concatenating elements from the input string based on certain patterns.</think>\n\n<code>x.replace(',', '|').replace(' ', '|')</code>",
+      "think_length": 89,
+      "code": "x.replace(',', '|').replace(' ', '|')",
+      "gold_code": "' | '.join(s.strip() for s in x.split(',') if s.strip())",
+      "tests": [
+        {
+          "input": "ebj, gmh ,,lykqaw",
+          "output": "ebj | gmh | lykqaw"
+        },
+        {
+          "input": "qss, snsm ,, sczo ,wmqgc, dnvou ",
+          "output": "qss | snsm | sczo | wmqgc | dnvou"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_dict_by_value",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show transformations where keys are either removed or updated based on their values.</think>\n\n<code>x.pop('gamma')</code>",
+      "think_length": 103,
+      "code": "x.pop('gamma')",
+      "gold_code": "{k: v for k, v in x.items() if v > 75}",
+      "tests": [
+        {
+          "input": {
+            "beta": 23,
+            "epsilon": 11,
+            "delta": 60,
+            "alpha": 38
+          },
+          "output": {}
+        },
+        {
+          "input": {
+            "alpha": 12,
+            "gamma": 98,
+            "zeta": 67,
+            "delta": 27,
+            "beta": 66
+          },
+          "output": {
+            "gamma": 98
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "extract_sort_dedup_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>\nTo transform the input string, we need to identify and extract specific patterns within it. The pattern seems to be a sequence of characters followed by \"SJP\" (possibly indicating some kind of code or identifier). We can split the string based on this pattern and concatenate the remaining parts accordingly.\n</think>\n\n<code>\n```python\nimport re\n\ndef transform_string(x):\n    # Split the string based on the identified pattern\n    parts = x.split('SJP')\n    \n    # Extract the first part before \"SJP\"\n    first_part = parts[0]\n    \n    # Extract the second part after \"SJP\"\n    second_part = parts[1].split(' ')[-1]  # Assuming the second part is a word\n    \n    # Concatenate the extracted parts\n    return f\"{first_part} {second_part}\"\n```\n</code>",
+      "think_length": 308,
+      "code": "```python\nimport re\n\ndef transform_string(x):\n    # Split the string based on the identified pattern\n    parts = x.split('SJP')\n    \n    # Extract the first part before \"SJP\"\n    first_part = parts[0]\n    \n    # Extract the second part after \"SJP\"\n    second_part = parts[1].split(' ')[-1]  # Assuming the second part is a word\n    \n    # Concatenate the extracted parts\n    return f\"{first_part} {second_part}\"\n```",
+      "gold_code": "' '.join(sorted(set(w.lower() for w in x.split())))",
+      "tests": [
+        {
+          "input": "emf ucoove emf kpvun EMF kpvun MSD UCOOVE msd",
+          "output": "emf kpvun msd ucoove"
+        },
+        {
+          "input": "sea GGCWH sea GGCWH GGCWH",
+          "output": "ggcwh sea"
+        }
+      ]
+    },
+    {
+      "template_name": "swap_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing each character with its uppercase version.</think>\n\n<code>x.upper()</code>",
+      "think_length": 76,
+      "code": "x.upper()",
+      "gold_code": "x.swapcase()",
+      "tests": [
+        {
+          "input": "RarnfWMIV",
+          "output": "rARNFwmiv"
+        },
+        {
+          "input": "OzlseVJN",
+          "output": "oZLSEvjn"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_numbers",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves concatenating numbers separated by commas.</think>\n<code>x[0] + ',' + x[1] + ',' + x[2]</code>",
+      "think_length": 60,
+      "code": "x[0] + ',' + x[1] + ',' + x[2]",
+      "gold_code": "','.join(re.findall(r'\\d+', x))",
+      "tests": [
+        {
+          "input": "price754 qty911 item389 ref502",
+          "output": "754,911,389,502"
+        },
+        {
+          "input": "ref778 price96 code765 price57",
+          "output": "778,96,765,57"
+        }
+      ]
+    },
+    {
+      "template_name": "first_n_chars",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing all characters except for those immediately following an uppercase letter. We can achieve this by iterating through each character and checking if it's followed by another uppercase letter.</think>\n\n<code>x[0] + ''.join([char for char in x if (char.isupper() or i == 0) and char != x[i]])</code>",
+      "think_length": 222,
+      "code": "x[0] + ''.join([char for char in x if (char.isupper() or i == 0) and char != x[i]])",
+      "gold_code": "x[:2]",
+      "tests": [
+        {
+          "input": "xfdsxviap",
+          "output": "xf"
+        },
+        {
+          "input": "hdeyuyqez",
+          "output": "hd"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_map_reduce",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples suggest that we need to sum up all the numbers in the list.</think>\n\n<code>x[0] + x[1] + x[2] + x[3] + x[4]</code>",
+      "think_length": 78,
+      "code": "x[0] + x[1] + x[2] + x[3] + x[4]",
+      "gold_code": "sum(n ** 2 for n in x if n % 2 == 0)",
+      "tests": [
+        {
+          "input": [
+            6,
+            15,
+            17,
+            16,
+            10,
+            5,
+            14,
+            2,
+            16
+          ],
+          "output": 848
+        },
+        {
+          "input": [
+            12,
+            10,
+            18,
+            9,
+            18,
+            16,
+            5,
+            17
+          ],
+          "output": 1148
+        }
+      ]
+    },
+    {
+      "template_name": "filter_dict_by_value",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to filter out keys starting with a specific letter (e.g., 'alpha', 'beta') and keep only those whose value is greater than 50.</think>\n\n<code>x = {k: v for k, v in x.items() if not k.startswith('alpha') or v > 50}</code>",
+      "think_length": 163,
+      "code": "x = {k: v for k, v in x.items() if not k.startswith('alpha') or v > 50}",
+      "gold_code": "{k: v for k, v in x.items() if v > 50}",
+      "tests": [
+        {
+          "input": {
+            "alpha": 81,
+            "beta": 73,
+            "zeta": 57,
+            "epsilon": 78,
+            "gamma": 46,
+            "delta": 82
+          },
+          "output": {
+            "alpha": 81,
+            "beta": 73,
+            "zeta": 57,
+            "epsilon": 78,
+            "delta": 82
+          }
+        },
+        {
+          "input": {
+            "epsilon": 34,
+            "gamma": 67,
+            "zeta": 56,
+            "beta": 31
+          },
+          "output": {
+            "gamma": 67,
+            "zeta": 56
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "int_to_hex",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be taking each digit of the number and converting it into its corresponding ASCII value for letters.</think>\n\n<code>x = str(x) # Convert x to string to iterate over digits</code>\n```python\nresult = ''\nfor char in x:\n    ascii_val = ord(char)\n    if ascii_val >= 97 and ascii_val <= 122:  # Check if character is lowercase letter (a-z)\n        result += chr(ascii_val - 32)  # Subtract 32 to get c-cf sequence\n    else:\n        result += char\n\nreturn result[:len(result)//2] + \"...\" + result[len(result)//2:]  # Return first half followed by last half\n```\nThis Python expression iterates through each character in the input string, converts it to its ASCII value, checks if it's within the range of lowercase letters, and then constructs the transformed string accordingly. The final part of the expression ensures that only the first half of the characters are returned, followed by the second half, which the original string is not modified.",
+      "think_length": 121,
+      "code": "x = str(x) # Convert x to string to iterate over digits",
+      "gold_code": "hex(x)[2:]",
+      "tests": [
+        {
+          "input": 19229,
+          "output": "4b1d"
+        },
+        {
+          "input": 14539,
+          "output": "38cb"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_sort_dedup_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing certain characters and rearranging them based on specific rules.</think>\n\n<code>\ndef transform(x):\n    # Remove unwanted characters and rearrange\n    return ''.join(sorted(x.replace(' ', ''), key=lambda c: (ord(c) - ord('a'), x.index(c))))\n</code>",
+      "think_length": 97,
+      "code": "def transform(x):\n    # Remove unwanted characters and rearrange\n    return ''.join(sorted(x.replace(' ', ''), key=lambda c: (ord(c) - ord('a'), x.index(c))))",
+      "gold_code": "' '.join(sorted(set(w.lower() for w in x.split())))",
+      "tests": [
+        {
+          "input": "LGV YWZRLE dix oeoha lgv lgv dix",
+          "output": "dix lgv oeoha ywzrle"
+        },
+        {
+          "input": "ftal jmbzda xegess ftal ftal JMBZDA jmbzda yryjlk ftal",
+          "output": "ftal jmbzda xegess yryjlk"
+        }
+      ]
+    },
+    {
+      "template_name": "split_filter_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves concatenating elements from the list of strings separated by commas.</think>\n\n<code>x.split(',').join('|')</code>",
+      "think_length": 86,
+      "code": "x.split(',').join('|')",
+      "gold_code": "' | '.join(s.strip() for s in x.split(',') if s.strip())",
+      "tests": [
+        {
+          "input": "hcpq,yfiysx, ezjvy , cd , jai ",
+          "output": "hcpq | yfiysx | ezjvy | cd | jai"
+        },
+        {
+          "input": "jcpxr, fnddl ,qbm,tazcw,tnpvb",
+          "output": "jcpxr | fnddl | qbm | tazcw | tnpvb"
+        }
+      ]
+    },
+    {
+      "template_name": "uppercase_strings",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves transforming each string in the list by replacing all lowercase letters with uppercase and vice versa.</think>\n\n<code>\ndef transform(x):\n    return ''.join([char.swapcase() for char in x])\n</code>",
+      "think_length": 120,
+      "code": "def transform(x):\n    return ''.join([char.swapcase() for char in x])",
+      "gold_code": "[s.upper() for s in x]",
+      "tests": [
+        {
+          "input": [
+            "tdg",
+            "ozc",
+            "ucqjwdr",
+            "rxeld",
+            "wgiyzyw"
+          ],
+          "output": [
+            "TDG",
+            "OZC",
+            "UCQJWDR",
+            "RXELD",
+            "WGIYZYW"
+          ]
+        },
+        {
+          "input": [
+            "eqr",
+            "xtqilj",
+            "ttkdnu",
+            "alsfld",
+            "jjnc"
+          ],
+          "output": [
+            "EQR",
+            "XTQILJ",
+            "TTKDNU",
+            "ALSFLD",
+            "JJNC"
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "first_n_chars",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves removing all characters except for letters and spaces.</think>\n<code>x = ''.join(c for c in x if c.isalnum())</code>",
+      "think_length": 72,
+      "code": "x = ''.join(c for c in x if c.isalnum())",
+      "gold_code": "x[:4]",
+      "tests": [
+        {
+          "input": "lsellsxplq",
+          "output": "lsel"
+        },
+        {
+          "input": "yadljlbdjihy",
+          "output": "yadl"
+        }
+      ]
+    },
+    {
+      "template_name": "title_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves removing spaces and converting all characters to uppercase.</think>\n\n<code>x.upper().replace(\" \", \"\")</code>",
+      "think_length": 77,
+      "code": "x.upper().replace(\" \", \"\")",
+      "gold_code": "x.title()",
+      "tests": [
+        {
+          "input": "mkpq hhumxi nrg",
+          "output": "Mkpq Hhumxi Nrg"
+        },
+        {
+          "input": "ehaac isiy",
+          "output": "Ehaac Isiy"
+        }
+      ]
+    },
+    {
+      "template_name": "sort_by_length",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be reversing each string and sorting it alphabetically.</think>\n\n<code>\ndef transform(x):\n    return sorted(reversed(x))\n</code>",
+      "think_length": 76,
+      "code": "def transform(x):\n    return sorted(reversed(x))",
+      "gold_code": "sorted(x, key=len)",
+      "tests": [
+        {
+          "input": [
+            "tmkjy",
+            "hemdzqlpp",
+            "ompcmzrh",
+            "r"
+          ],
+          "output": [
+            "r",
+            "tmkjy",
+            "ompcmzrh",
+            "hemdzqlpp"
+          ]
+        },
+        {
+          "input": [
+            "zzibl",
+            "mzyddsci",
+            "oobowvgmz",
+            "vwjrup",
+            "l",
+            "wqsjihg",
+            "odl"
+          ],
+          "output": [
+            "l",
+            "odl",
+            "zzibl",
+            "vwjrup",
+            "wqsjihg",
+            "mzyddsci",
+            "oobowvgmz"
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "filter_positive",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that each element is being transformed by adding or subtracting values from itself and its neighbors.</think>\n\n<code>x + x % len(x) // 2</code>",
+      "think_length": 125,
+      "code": "x + x % len(x) // 2",
+      "gold_code": "[n for n in x if n > 0]",
+      "tests": [
+        {
+          "input": [
+            5,
+            -9,
+            -15,
+            -6,
+            -10,
+            -5,
+            17,
+            -9,
+            19
+          ],
+          "output": [
+            5,
+            17,
+            19
+          ]
+        },
+        {
+          "input": [
+            -20,
+            -13,
+            17,
+            10,
+            4,
+            -15,
+            -18
+          ],
+          "output": [
+            17,
+            10,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "int_to_hex",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be that each character is replaced by its hexadecimal representation and concatenated together.</think>\n\n<code>x.hex().upper()</code>",
+      "think_length": 116,
+      "code": "x.hex().upper()",
+      "gold_code": "hex(x)[2:]",
+      "tests": [
+        {
+          "input": 56212,
+          "output": "db94"
+        },
+        {
+          "input": 60290,
+          "output": "eb82"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_positive",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to select every second element from the list.</think>\n\n<code>x[::2]</code>",
+      "think_length": 82,
+      "code": "x[::2]",
+      "gold_code": "[n for n in x if n > 0]",
+      "tests": [
+        {
+          "input": [
+            15,
+            -13,
+            -4,
+            -13,
+            2,
+            9,
+            9,
+            -13,
+            15,
+            -17
+          ],
+          "output": [
+            15,
+            2,
+            9,
+            9,
+            15
+          ]
+        },
+        {
+          "input": [
+            8,
+            -4,
+            16,
+            -12,
+            -11,
+            -8,
+            19,
+            7,
+            6,
+            3
+          ],
+          "output": [
+            8,
+            16,
+            19,
+            7,
+            6,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "swap_keys_values",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves reversing the keys and values of the dictionary.</think>\n<code>x = {v: k for k, v in x.items()}</code>",
+      "think_length": 66,
+      "code": "x = {v: k for k, v in x.items()}",
+      "gold_code": "{v: k for k, v in x.items()}",
+      "tests": [
+        {
+          "input": {
+            "p": "epsilon",
+            "d": "theta",
+            "x": "beta",
+            "t": "gamma"
+          },
+          "output": {
+            "epsilon": "p",
+            "theta": "d",
+            "beta": "x",
+            "gamma": "t"
+          }
+        },
+        {
+          "input": {
+            "v": "beta",
+            "t": "eta",
+            "l": "kappa"
+          },
+          "output": {
+            "beta": "v",
+            "eta": "t",
+            "kappa": "l"
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "extract_email",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing all characters except for those following '@'. We can achieve this by splitting the string at each '@', taking the substring from the second character onwards, and joining them back together.</think>\n\n<code>\ndef transform(x):\n    return ''.join([email[1:] for email in x.split('@')])\n</code>",
+      "think_length": 224,
+      "code": "def transform(x):\n    return ''.join([email[1:] for email in x.split('@')])",
+      "gold_code": "re.search(r'[\\w.+-]+@[\\w-]+\\.[\\w.]+', x).group()",
+      "tests": [
+        {
+          "input": "iOCpSkUbGCbybbu yzvapqq@tyno.io end",
+          "output": "yzvapqq@tyno.io"
+        },
+        {
+          "input": "yRRHcSsi jgjvulh@yfd.com end",
+          "output": "jgjvulh@yfd.com"
+        }
+      ]
+    },
+    {
+      "template_name": "format_dict_entries",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves transforming dictionaries into a specific format by concatenating keys and values separated by '|'. We need to iterate through each key-value pair in the dictionary and construct the string accordingly.</think>\n\n<code>\ndef transform_dict(x):\n    result = ''\n    for key, value in x.items():\n        result += f'{key}={value} | '\n    return result.rstrip(' | ')\n</code>",
+      "think_length": 220,
+      "code": "def transform_dict(x):\n    result = ''\n    for key, value in x.items():\n        result += f'{key}={value} | '\n    return result.rstrip(' | ')",
+      "gold_code": "' | '.join(f'{k}={v}' for k, v in x.items())",
+      "tests": [
+        {
+          "input": {
+            "name": "zehv",
+            "dept": "exgzc",
+            "age": "flm",
+            "city": "dylxl",
+            "role": "btxprq"
+          },
+          "output": "name=zehv | dept=exgzc | age=flm | city=dylxl | role=btxprq"
+        },
+        {
+          "input": {
+            "role": "zygqi",
+            "age": "kdkixb",
+            "city": "ddxba",
+            "dept": "gmbvc"
+          },
+          "output": "role=zygqi | age=kdkixb | city=ddxba | dept=gmbvc"
+        }
+      ]
+    },
+    {
+      "template_name": "int_to_hex",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be that each digit is replaced by its corresponding letter from A to F.</think>\n\n<code>x = str(x) # Convert x to string for easier manipulation</code>\n```python\n# Replace each digit with its corresponding letter (A-F)\nresult = ''.join(chr(65 + int(digit)) if d.isdigit() else d for digit in x)\n```\nThis Python expression converts the integer `x` into a string and replaces each digit with its corresponding letter from A to F, effectively transforming the number into the desired format.",
+      "think_length": 92,
+      "code": "x = str(x) # Convert x to string for easier manipulation",
+      "gold_code": "hex(x)[2:]",
+      "tests": [
+        {
+          "input": 30807,
+          "output": "7857"
+        },
+        {
+          "input": 2378,
+          "output": "94a"
+        }
+      ]
+    },
+    {
+      "template_name": "reverse_words",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves reversing each word in the string.</think>\n\n<code>x.split() -> words = x.split()</code>\n```python\nwords = x.split()\ntransformed_words = [word[::-1] for word in words]\noutput_string = \" \".join(transformed_words)\nreturn output_string\n```\nThis Python code first splits the input string into individual words. Then it reverses each word and joins them back together into a single string. The reversed order of words is what we're looking for here.",
+      "think_length": 52,
+      "code": "x.split() -> words = x.split()",
+      "gold_code": "' '.join(x.split()[::-1])",
+      "tests": [
+        {
+          "input": "cjiap pzktud sjss rzyi",
+          "output": "rzyi sjss pzktud cjiap"
+        },
+        {
+          "input": "qqgxty mkytr jucxuvi vmsoeb",
+          "output": "vmsoeb jucxuvi mkytr qqgxty"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_sort_dedup_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing spaces and keeping only certain characters at specific positions.</think>\n\n<code>x.replace(' ', '')</code>",
+      "think_length": 98,
+      "code": "x.replace(' ', '')",
+      "gold_code": "' '.join(sorted(set(w.lower() for w in x.split())))",
+      "tests": [
+        {
+          "input": "wnizn CYLJG MDPXLE cyljg mdpxle",
+          "output": "cyljg mdpxle wnizn"
+        },
+        {
+          "input": "HJS soiqf rxi RXI HJS",
+          "output": "hjs rxi soiqf"
+        }
+      ]
+    },
+    {
+      "template_name": "sort_list",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that each element is being transformed by multiplying it by -1 and adding or subtracting some value.</think>\n\n<code>x * (-1) + max(0, min(max(0, x), 1))</code>\nThis expression seems to follow the pattern observed in the examples:\n- It multiplies each element by -1 (the_1)\n- Then adds or subtracts a value based on its position (max(0, min(max(0, x), 1)))",
+      "think_length": 124,
+      "code": "x * (-1) + max(0, min(max(0, x), 1))",
+      "gold_code": "sorted(x)",
+      "tests": [
+        {
+          "input": [
+            10,
+            45,
+            -49,
+            -17
+          ],
+          "output": [
+            -49,
+            -17,
+            10,
+            45
+          ]
+        },
+        {
+          "input": [
+            -44,
+            47,
+            -14,
+            11,
+            -24
+          ],
+          "output": [
+            -44,
+            -24,
+            -14,
+            11,
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "extract_numbers",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be concatenating numbers and letters together without any spaces or punctuation.</think>\n\n<code>x.split(' ')[-1].replace(',', '')</code>",
+      "think_length": 101,
+      "code": "x.split(' ')[-1].replace(',', '')",
+      "gold_code": "','.join(re.findall(r'\\d+', x))",
+      "tests": [
+        {
+          "input": "ref853 price685 item280",
+          "output": "853,685,280"
+        },
+        {
+          "input": "price123 qty769 price959",
+          "output": "123,769,959"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_map_reduce",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples suggest a pattern where each number is multiplied by its position in the list and then summed up.</think>\n\n<code>\ndef transform(x):\n    return sum(i * (i + 1) for i in range(len(x)))\n</code>",
+      "think_length": 116,
+      "code": "def transform(x):\n    return sum(i * (i + 1) for i in range(len(x)))",
+      "gold_code": "sum(n ** 2 for n in x if n % 2 == 0)",
+      "tests": [
+        {
+          "input": [
+            19,
+            2,
+            6,
+            5,
+            17,
+            19,
+            11,
+            4,
+            9,
+            4
+          ],
+          "output": 72
+        },
+        {
+          "input": [
+            9,
+            1,
+            10,
+            17,
+            13
+          ],
+          "output": 100
+        }
+      ]
+    },
+    {
+      "template_name": "title_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves replacing spaces and punctuation marks with uppercase letters.</think>\n\n<code>x.upper()</code>",
+      "think_length": 80,
+      "code": "x.upper()",
+      "gold_code": "x.title()",
+      "tests": [
+        {
+          "input": "zrwaas ibzae kevbf xtto",
+          "output": "Zrwaas Ibzae Kevbf Xtto"
+        },
+        {
+          "input": "lxmdzi rzaoa dojjrr hir",
+          "output": "Lxmdzi Rzaoa Dojjrr Hir"
+        }
+      ]
+    },
+    {
+      "template_name": "format_dict_entries",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task is to transform an input dictionary into a string format where each key-value pair is separated by '|'. We can achieve this by iterating over the dictionary and constructing the desired string format.</think>\n\n<code>\ndef transform_input(input_dict):\n    result = ''\n    for key, value in input_dict.items():\n        if isinstance(value, str):\n            # Convert strings to lowercase or remove spaces for uniformity\n            value = value.lower().replace(' ', '_')\n        else:\n            value = f'_{value}'\n        result += f'{key}={value}|'\n    return result.rstrip('|')  # Remove trailing '|' character\n</code>",
+      "think_length": 209,
+      "code": "def transform_input(input_dict):\n    result = ''\n    for key, value in input_dict.items():\n        if isinstance(value, str):\n            # Convert strings to lowercase or remove spaces for uniformity\n            value = value.lower().replace(' ', '_')\n        else:\n            value = f'_{value}'\n        result += f'{key}={value}|'\n    return result.rstrip('|')  # Remove trailing '|' character",
+      "gold_code": "' | '.join(f'{k}={v}' for k, v in x.items())",
+      "tests": [
+        {
+          "input": {
+            "age": "icorj",
+            "dept": "uzrniv",
+            "name": "mms"
+          },
+          "output": "age=icorj | dept=uzrniv | name=mms"
+        },
+        {
+          "input": {
+            "age": "ifmc",
+            "name": "dyx",
+            "dept": "fwhg"
+          },
+          "output": "age=ifmc | name=dyx | dept=fwhg"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_positive",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to sort the numbers in ascending order.</think>\n\n<code>x.sort()</code>",
+      "think_length": 76,
+      "code": "x.sort()",
+      "gold_code": "[n for n in x if n > 0]",
+      "tests": [
+        {
+          "input": [
+            -14,
+            -9,
+            -8,
+            -6,
+            -5,
+            3,
+            3,
+            7,
+            16,
+            19
+          ],
+          "output": [
+            16,
+            7,
+            3,
+            3,
+            19
+          ]
+        },
+        {
+          "input": [
+            0,
+            -8,
+            -14,
+            11,
+            0,
+            -12,
+            14,
+            4
+          ],
+          "output": [
+            11,
+            14,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "extract_sort_dedup_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be rearranging words while keeping certain characters intact.</think>\n\n<code>x.replace(' ', '')</code>",
+      "think_length": 82,
+      "code": "x.replace(' ', '')",
+      "gold_code": "' '.join(sorted(set(w.lower() for w in x.split())))",
+      "tests": [
+        {
+          "input": "cblfnf MHZR sed mhzr SED mhzr sed",
+          "output": "cblfnf mhzr sed"
+        },
+        {
+          "input": "WQV xuxho XUXHO emiewg spdz WQV",
+          "output": "emiewg spdz wqv xuxho"
+        }
+      ]
+    },
+    {
+      "template_name": "last_word",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing all characters except for those that are lowercase letters.</think>\n\n<code>x.lower()</code>",
+      "think_length": 92,
+      "code": "x.lower()",
+      "gold_code": "x.split()[-1]",
+      "tests": [
+        {
+          "input": "ptu vffqd xvbvxpef igucjkch",
+          "output": "igucjkch"
+        },
+        {
+          "input": "vffeq vmvn",
+          "output": "vmvn"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_numbers",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves concatenating numbers and strings together based on their positions.</think>\n\n<code>x[::2] + ',' + x[1::2]</code>",
+      "think_length": 86,
+      "code": "x[::2] + ',' + x[1::2]",
+      "gold_code": "','.join(re.findall(r'\\d+', x))",
+      "tests": [
+        {
+          "input": "price406 code656",
+          "output": "406,656"
+        },
+        {
+          "input": "qty327 ref523",
+          "output": "327,523"
+        }
+      ]
+    },
+    {
+      "template_name": "uppercase_strings",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that each string is transformed by removing all spaces and converting it to uppercase.</think>\n\n<code>x.upper().replace(' ', '')</code>",
+      "think_length": 110,
+      "code": "x.upper().replace(' ', '')",
+      "gold_code": "[s.upper() for s in x]",
+      "tests": [
+        {
+          "input": [
+            "muxi",
+            "scazl",
+            "ugtiq"
+          ],
+          "output": [
+            "MUXI",
+            "SCAZL",
+            "UGTIQ"
+          ]
+        },
+        {
+          "input": [
+            "lfk",
+            "wnzvvo",
+            "syd",
+            "oiba",
+            "tlkzri",
+            "cut"
+          ],
+          "output": [
+            "LFK",
+            "WNZVVO",
+            "SYD",
+            "OIBA",
+            "TLKZRI",
+            "CUT"
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "filter_map_reduce",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples suggest that we need to sum up all the numbers in the list.</think>\n\n<code>x[0] + x[1] + x[2] + x[3] + x[4] + x[5] + x[6] + x[7] + x[8]</code>",
+      "think_length": 78,
+      "code": "x[0] + x[1] + x[2] + x[3] + x[4] + x[5] + x[6] + x[7] + x[8]",
+      "gold_code": "sum(n ** 2 for n in x if n % 2 == 0)",
+      "tests": [
+        {
+          "input": [
+            8,
+            18,
+            14,
+            3,
+            5
+          ],
+          "output": 584
+        },
+        {
+          "input": [
+            19,
+            20,
+            3,
+            2,
+            18,
+            17,
+            1,
+            13,
+            19
+          ],
+          "output": 728
+        }
+      ]
+    },
+    {
+      "template_name": "swap_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing each letter with its corresponding uppercase letter from the beginning of the alphabet.</think>\n\n<code>x.upper()</code>",
+      "think_length": 121,
+      "code": "x.upper()",
+      "gold_code": "x.swapcase()",
+      "tests": [
+        {
+          "input": "GgkilMOHx",
+          "output": "gGKILmohX"
+        },
+        {
+          "input": "afuEYGeLz",
+          "output": "AFUeygElZ"
+        }
+      ]
+    },
+    {
+      "template_name": "uppercase_strings",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing each character with its corresponding uppercase letter from the English alphabet.</think>\n\n<code>x.upper()</code>",
+      "think_length": 115,
+      "code": "x.upper()",
+      "gold_code": "[s.upper() for s in x]",
+      "tests": [
+        {
+          "input": [
+            "todovbc",
+            "vyck",
+            "ymz",
+            "cowqqam",
+            "nvq",
+            "lxj"
+          ],
+          "output": [
+            "TODOVBC",
+            "VYCK",
+            "YMZ",
+            "COWQQAM",
+            "NVQ",
+            "LXJ"
+          ]
+        },
+        {
+          "input": [
+            "lwgzy",
+            "ulx",
+            "klu"
+          ],
+          "output": [
+            "LWGZY",
+            "ULX",
+            "KLU"
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "date_ymd_to_month_day",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task is to extract the month and day from the date string and format it accordingly.</think>\n\n<code>x.split('-')[1].split(' ')[0] + ' ' + x.split('-')[2]</code>",
+      "think_length": 88,
+      "code": "x.split('-')[1].split(' ')[0] + ' ' + x.split('-')[2]",
+      "gold_code": "datetime.datetime.strptime(x, '%Y-%m-%d').strftime('%b %d')",
+      "tests": [
+        {
+          "input": "2023-03-14",
+          "output": "Mar 14"
+        },
+        {
+          "input": "2020-11-27",
+          "output": "Nov 27"
+        }
+      ]
+    },
+    {
+      "template_name": "date_ymd_to_month_day",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task is to extract the month and day from the date string and format it accordingly.</think>\n\n<code>x.split('-')[1] + '-' + x.split('-')[2]</code>",
+      "think_length": 88,
+      "code": "x.split('-')[1] + '-' + x.split('-')[2]",
+      "gold_code": "datetime.datetime.strptime(x, '%Y-%m-%d').strftime('%b %d')",
+      "tests": [
+        {
+          "input": "2023-07-31",
+          "output": "Jul 31"
+        },
+        {
+          "input": "2020-12-11",
+          "output": "Dec 11"
+        }
+      ]
+    },
+    {
+      "template_name": "percentage_format",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to convert numbers between 0 and 1 into percentages. We can achieve this by multiplying the number by 100 and adding the percentage sign '%'.</think>\n\n<code>x * 100</code>",
+      "think_length": 178,
+      "code": "x * 100",
+      "gold_code": "f'{x * 100:.1f}%'",
+      "tests": [
+        {
+          "input": 0.6084,
+          "output": "60.8%"
+        },
+        {
+          "input": 0.4738,
+          "output": "47.4%"
+        }
+      ]
+    },
+    {
+      "template_name": "split_filter_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves concatenating elements separated by commas and spaces into a single string.</think>\n\n<code>x.split(', ').join(' ')</code>",
+      "think_length": 93,
+      "code": "x.split(', ').join(' ')",
+      "gold_code": "' | '.join(s.strip() for s in x.split(',') if s.strip())",
+      "tests": [
+        {
+          "input": "xtgmp,ltgjtb,,yzcj,,jqphx",
+          "output": "xtgmp | ltgjtb | yzcj | jqphx"
+        },
+        {
+          "input": " xp , smzpj ,ygc,vyxixe,",
+          "output": "xp | smzpj | ygc | vyxixe"
+        }
+      ]
+    },
+    {
+      "template_name": "int_to_hex",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be taking each digit of the number and converting it into its hexadecimal equivalent.</think>\n\n<code>x % 10 + (x // 10) * 16</code>",
+      "think_length": 106,
+      "code": "x % 10 + (x // 10) * 16",
+      "gold_code": "hex(x)[2:]",
+      "tests": [
+        {
+          "input": 30121,
+          "output": "75a9"
+        },
+        {
+          "input": 1280,
+          "output": "500"
+        }
+      ]
+    },
+    {
+      "template_name": "float_to_currency",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves formatting numbers into currency format by adding commas and the dollar sign.</think>\n\n<code>str(x).replace(',', ' ').strip('$')</code>",
+      "think_length": 95,
+      "code": "str(x).replace(',', ' ').strip('$')",
+      "gold_code": "f'${x:,.2f}'",
+      "tests": [
+        {
+          "input": 138.89,
+          "output": "$138.89"
+        },
+        {
+          "input": 6365.21,
+          "output": "$6,365.21"
+        }
+      ]
+    },
+    {
+      "template_name": "reverse_words",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be rearranging characters based on their position and possibly some specific character order.</think>\n\n<code>\ndef transform(x):\n    # Rearrange characters based on their position and specific character order\n    return ''.join(sorted(x, key=lambda c: (x.index(c), x.count(c))))\n</code>",
+      "think_length": 114,
+      "code": "def transform(x):\n    # Rearrange characters based on their position and specific character order\n    return ''.join(sorted(x, key=lambda c: (x.index(c), x.count(c))))",
+      "gold_code": "' '.join(x.split()[::-1])",
+      "tests": [
+        {
+          "input": "nslw xsuvt zvldd shhmjgb spn ksre",
+          "output": "ksre spn shhmjgb zvldd xsuvt nslw"
+        },
+        {
+          "input": "ffwv xveiuas fzr hhn",
+          "output": "hhn fzr xveiuas ffwv"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_sort_dedup_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing spaces and keeping only the first letter of each word.</think>\n<code>x.replace(' ', '').split(' ').pop(0) + ''</code>",
+      "think_length": 87,
+      "code": "x.replace(' ', '').split(' ').pop(0) + ''",
+      "gold_code": "' '.join(sorted(set(w.lower() for w in x.split())))",
+      "tests": [
+        {
+          "input": "NMFO nmfo xgq nmfo bnc xgq",
+          "output": "bnc nmfo xgq"
+        },
+        {
+          "input": "wgmx ewgsk MQECIU ewgsk WAOQPI",
+          "output": "ewgsk mqeciu waoqpi wgmx"
+        }
+      ]
+    },
+    {
+      "template_name": "swap_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be that each character is replaced by its corresponding uppercase letter from the beginning of the alphabet.</think>\n\n<code>x.upper()</code>",
+      "think_length": 129,
+      "code": "x.upper()",
+      "gold_code": "x.swapcase()",
+      "tests": [
+        {
+          "input": "asLDzZYIbgdg",
+          "output": "ASldZzyiBGDG"
+        },
+        {
+          "input": "SiLsmK",
+          "output": "sIlSMk"
+        }
+      ]
+    },
+    {
+      "template_name": "replace_digits_hash",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing all but the first and last characters of the string with '#'. We can achieve this by slicing the string from index 1 to the second-to-last character and concatenating it with the substring starting at the last character.</think>\n\n<code>x[1:-1] + x[-1]</code>",
+      "think_length": 254,
+      "code": "x[1:-1] + x[-1]",
+      "gold_code": "re.sub(r'\\d', '#', x)",
+      "tests": [
+        {
+          "input": "yftoyhkyi25gj",
+          "output": "yftoyhkyi##gj"
+        },
+        {
+          "input": "efytbmvzl62bjhsoc",
+          "output": "efytbmvzl##bjhsoc"
+        }
+      ]
+    },
+    {
+      "template_name": "replace_digits_hash",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing each character in the string with a hash symbol (#) if it is not an alphabetic letter or space, and keeping spaces unchanged.</think>\n\n<code>x.replace(' ', '#').replace('[alpha]', '#')</code>",
+      "think_length": 159,
+      "code": "x.replace(' ', '#').replace('[alpha]', '#')",
+      "gold_code": "re.sub(r'\\d', '#', x)",
+      "tests": [
+        {
+          "input": "bufyo18kjcqw80",
+          "output": "bufyo##kjcqw##"
+        },
+        {
+          "input": "zsifrhvgyez66",
+          "output": "zsifrhvgyez##"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_numbers",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves converting numbers and letters into a specific format.</think>\n<code>x.replace(' ', '')</code>",
+      "think_length": 72,
+      "code": "x.replace(' ', '')",
+      "gold_code": "','.join(re.findall(r'\\d+', x))",
+      "tests": [
+        {
+          "input": "item717 code408 item456 item101",
+          "output": "717,408,456,101"
+        },
+        {
+          "input": "code272 ref647 price963 qty362",
+          "output": "272,647,963,362"
+        }
+      ]
+    },
+    {
+      "template_name": "replace_digits_hash",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing all digits with '#' and keeping only the first two characters of the string.</think>\n\n<code>x[:2] + '#' * (len(x) - 2)</code>",
+      "think_length": 110,
+      "code": "x[:2] + '#' * (len(x) - 2)",
+      "gold_code": "re.sub(r'\\d', '#', x)",
+      "tests": [
+        {
+          "input": "49irypzzfij0",
+          "output": "##irypzzfij#"
+        },
+        {
+          "input": "59fc1835",
+          "output": "##fc####"
+        }
+      ]
+    },
+    {
+      "template_name": "int_to_hex",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be taking each digit of the number and converting it into its corresponding position in the alphabet (A=1, B=2, ..., Z=26). We can achieve this by first converting the number to a string, then mapping each character to its position in the alphabet, and finally concatenating those positions together.</think>\n\n<code>x = str(x) + ''.join([chr(65 + ord(c) - 65) for c in x])</code>",
+      "think_length": 321,
+      "code": "x = str(x) + ''.join([chr(65 + ord(c) - 65) for c in x])",
+      "gold_code": "hex(x)[2:]",
+      "tests": [
+        {
+          "input": 58485,
+          "output": "e475"
+        },
+        {
+          "input": 42097,
+          "output": "a471"
+        }
+      ]
+    },
+    {
+      "template_name": "split_filter_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves concatenating elements from the input string separated by spaces.</think>\n\n<code>x.split(',').join(' | ')</code>",
+      "think_length": 83,
+      "code": "x.split(',').join(' | ')",
+      "gold_code": "' | '.join(s.strip() for s in x.split(',') if s.strip())",
+      "tests": [
+        {
+          "input": " vsgf ,, udmses ,,urdft,, eyt ,,zttkpt",
+          "output": "vsgf | udmses | urdft | eyt | zttkpt"
+        },
+        {
+          "input": "shfmp,rvesqk,uxvcta,",
+          "output": "shfmp | rvesqk | uxvcta"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_dict_by_value",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples suggest that we need to filter out keys based on their values or some other criteria.</think>\n\n<code>x.pop('alpha')</code>",
+      "think_length": 104,
+      "code": "x.pop('alpha')",
+      "gold_code": "{k: v for k, v in x.items() if v > 75}",
+      "tests": [
+        {
+          "input": {
+            "gamma": 36,
+            "epsilon": 12,
+            "beta": 28,
+            "zeta": 75,
+            "delta": 16
+          },
+          "output": {
+            "alpha": 76
+          }
+        },
+        {
+          "input": {
+            "gamma": 26,
+            "alpha": 66,
+            "delta": 85,
+            "beta": 88,
+            "zeta": 55,
+            "epsilon": 71
+          },
+          "output": {
+            "delta": 85,
+            "beta": 88
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "float_to_currency",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves formatting numbers into currency format by adding commas and the dollar sign.</think>\n\n<code>str(x).replace(',', ' ').strip('$')</code>",
+      "think_length": 95,
+      "code": "str(x).replace(',', ' ').strip('$')",
+      "gold_code": "f'${x:,.2f}'",
+      "tests": [
+        {
+          "input": 5489.82,
+          "output": "$5,489.82"
+        },
+        {
+          "input": 5696.2,
+          "output": "$5,696.20"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_positive",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show an increasing order of absolute values for each element.</think>\n\n<code>x.sort(key=abs)</code>",
+      "think_length": 80,
+      "code": "x.sort(key=abs)",
+      "gold_code": "[n for n in x if n > 0]",
+      "tests": [
+        {
+          "input": [
+            1,
+            5,
+            -9,
+            10,
+            12,
+            -15,
+            20
+          ],
+          "output": [
+            1,
+            20,
+            12,
+            5,
+            10
+          ]
+        },
+        {
+          "input": [
+            -15,
+            18,
+            -5,
+            -20,
+            -3,
+            -12,
+            -18,
+            -15,
+            15
+          ],
+          "output": [
+            18,
+            15
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "swap_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves replacing each letter in the string with its corresponding ASCII value and converting it back to a string.</think>\n\n<code>x.upper().translate(str.maketrans('abcdefghijklmnopqrstuvwxyz', '1234567890'))</code>",
+      "think_length": 124,
+      "code": "x.upper().translate(str.maketrans('abcdefghijklmnopqrstuvwxyz', '1234567890'))",
+      "gold_code": "x.swapcase()",
+      "tests": [
+        {
+          "input": "lgBpoHb",
+          "output": "LGbPOhB"
+        },
+        {
+          "input": "PvqyFRQSopa",
+          "output": "pVQYfrqsOPA"
+        }
+      ]
+    },
+    {
+      "template_name": "title_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing spaces with uppercase letters and keeping other characters unchanged.</think>\n\n<code>x.upper().replace(' ', '')</code>",
+      "think_length": 103,
+      "code": "x.upper().replace(' ', '')",
+      "gold_code": "x.title()",
+      "tests": [
+        {
+          "input": "bioe gpezg thuvsus mok",
+          "output": "Bioe Gpezg Thuvsus Mok"
+        },
+        {
+          "input": "kjq riqp cqg xrxrcay",
+          "output": "Kjq Riqp Cqg Xrxrcay"
+        }
+      ]
+    },
+    {
+      "template_name": "title_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves replacing spaces and punctuation marks with uppercase letters.</think>\n\n<code>x.upper().replace(' ', '')</code>",
+      "think_length": 80,
+      "code": "x.upper().replace(' ', '')",
+      "gold_code": "x.title()",
+      "tests": [
+        {
+          "input": "umf vuxq",
+          "output": "Umf Vuxq"
+        },
+        {
+          "input": "gulg zsiwr hyyjk",
+          "output": "Gulg Zsiwr Hyyjk"
+        }
+      ]
+    },
+    {
+      "template_name": "replace_digits_hash",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing all digits with an underscore and adding leading underscores where necessary.</think>\n\n<code>x.replace(' ', '_').replace('0', '#')</code>",
+      "think_length": 111,
+      "code": "x.replace(' ', '_').replace('0', '#')",
+      "gold_code": "re.sub(r'\\d', '#', x)",
+      "tests": [
+        {
+          "input": "rv55iuk8",
+          "output": "rv##iuk#"
+        },
+        {
+          "input": "65qnopsmonowy",
+          "output": "##qnopsmonowy"
+        }
+      ]
+    },
+    {
+      "template_name": "reverse_words",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be rearranging words while keeping the order of characters within each word intact.</think>\n\n<code>x.split(' ')[::-1].join('')</code>",
+      "think_length": 104,
+      "code": "x.split(' ')[::-1].join('')",
+      "gold_code": "' '.join(x.split()[::-1])",
+      "tests": [
+        {
+          "input": "soac bidc vnezho sds",
+          "output": "sds vnezho bidc soac"
+        },
+        {
+          "input": "ekvqze iyzw gluv kidxfz tmsxsxh",
+          "output": "tmsxsxh kidxfz gluv iyzw ekvqze"
+        }
+      ]
+    },
+    {
+      "template_name": "swap_keys_values",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves mapping each character from the input string to its corresponding value based on the given dictionary.</think>\n\n<code>\ndef transform(x):\n    return {value: key for key, value in x.items()}\n</code>",
+      "think_length": 120,
+      "code": "def transform(x):\n    return {value: key for key, value in x.items()}",
+      "gold_code": "{v: k for k, v in x.items()}",
+      "tests": [
+        {
+          "input": {
+            "m": "delta",
+            "p": "zeta",
+            "c": "theta",
+            "u": "beta",
+            "k": "iota"
+          },
+          "output": {
+            "delta": "m",
+            "zeta": "p",
+            "theta": "c",
+            "beta": "u",
+            "iota": "k"
+          }
+        },
+        {
+          "input": {
+            "g": "eta",
+            "i": "alpha",
+            "c": "epsilon"
+          },
+          "output": {
+            "eta": "g",
+            "alpha": "i",
+            "epsilon": "c"
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "extract_numbers",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves concatenating numbers separated by commas.</think>\n<code>x[0] + ',' + x[1] + ',' + x[2]</code>",
+      "think_length": 60,
+      "code": "x[0] + ',' + x[1] + ',' + x[2]",
+      "gold_code": "','.join(re.findall(r'\\d+', x))",
+      "tests": [
+        {
+          "input": "qty421 price895",
+          "output": "421,895"
+        },
+        {
+          "input": "code470 item162 qty584 price738",
+          "output": "470,162,584,738"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_email",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing all characters except for those after '@'. We can achieve this by splitting the string at each '@', taking the second part of each substring, and joining them back together.</think>\n\n<code>\ndef transform(x):\n    return ''.join([sub[1] for sub in x.split('@')])\n</code>",
+      "think_length": 206,
+      "code": "def transform(x):\n    return ''.join([sub[1] for sub in x.split('@')])",
+      "gold_code": "re.search(r'[\\w.+-]+@[\\w-]+\\.[\\w.]+', x).group()",
+      "tests": [
+        {
+          "input": "BdCvrxjbAj ifrw@ipa.net end",
+          "output": "ifrw@ipa.net"
+        },
+        {
+          "input": "reqsZtHnHhfkDhPz ydbypx@txott.com end",
+          "output": "ydbypx@txott.com"
+        }
+      ]
+    },
+    {
+      "template_name": "first_n_chars",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing all characters except for those located at even indices of the string.</think>\n\n<code>x[::2]</code>",
+      "think_length": 103,
+      "code": "x[::2]",
+      "gold_code": "x[:3]",
+      "tests": [
+        {
+          "input": "hruyjpm",
+          "output": "hru"
+        },
+        {
+          "input": "yswdnvakdb",
+          "output": "ysw"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_email",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be extracting the email address from the string after '@'. We can split the string by '@', take the second part (indexing starts at 0), and join it back together.</think>\n\n<code>x.split('@')[1]</code>",
+      "think_length": 183,
+      "code": "x.split('@')[1]",
+      "gold_code": "re.search(r'[\\w.+-]+@[\\w-]+\\.[\\w.]+', x).group()",
+      "tests": [
+        {
+          "input": "tsIHrS fugdeje@oojr.net end",
+          "output": "fugdeje@oojr.net"
+        },
+        {
+          "input": "cdwVvytid mqjiykx@finde.org end",
+          "output": "mqjiykx@finde.org"
+        }
+      ]
+    },
+    {
+      "template_name": "percentage_format",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to format numbers into percentages and round them appropriately.</think>\n\n<code>x * 100.0 + '%</code>",
+      "think_length": 101,
+      "code": "x * 100.0 + '%",
+      "gold_code": "f'{x * 100:.1f}%'",
+      "tests": [
+        {
+          "input": 0.1915,
+          "output": "19.1%"
+        },
+        {
+          "input": 0.4375,
+          "output": "43.8%"
+        }
+      ]
+    },
+    {
+      "template_name": "reverse_words",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>\nTo transform the input string, we need to reverse the order of its characters and remove any spaces. This can be achieved by slicing the string and reversing it.\n</think>\n\n<code>\nreverse_string = ''.join(reversed(x))\n</code>",
+      "think_length": 161,
+      "code": "reverse_string = ''.join(reversed(x))",
+      "gold_code": "' '.join(x.split()[::-1])",
+      "tests": [
+        {
+          "input": "oksoxk auqtys tdokhg coex cgjxq ldmk",
+          "output": "ldmk cgjxq coex tdokhg auqtys oksoxk"
+        },
+        {
+          "input": "hyh ewb fme daujtiz peqa",
+          "output": "peqa daujtiz fme ewb hyh"
+        }
+      ]
+    },
+    {
+      "template_name": "deduplicate",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be grouping consecutive numbers together and sorting them in ascending order.</think>\n\n<code>\ndef transform(x):\n    return sorted(set([sorted(list(group)) for group in zip(*[iter(x)]*2)]))\n</code>",
+      "think_length": 98,
+      "code": "def transform(x):\n    return sorted(set([sorted(list(group)) for group in zip(*[iter(x)]*2)]))",
+      "gold_code": "list(dict.fromkeys(x))",
+      "tests": [
+        {
+          "input": [
+            2,
+            3,
+            2,
+            1,
+            5,
+            5,
+            3,
+            5,
+            7
+          ],
+          "output": [
+            2,
+            3,
+            1,
+            5,
+            7
+          ]
+        },
+        {
+          "input": [
+            6,
+            1,
+            4,
+            7,
+            3,
+            6,
+            1,
+            3,
+            3
+          ],
+          "output": [
+            6,
+            1,
+            4,
+            7,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "float_to_currency",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves formatting numbers into currency format by adding commas and the dollar sign.</think>\n\n<code>str(x).replace(',', '').replace('.', ',') + '$'</code>",
+      "think_length": 95,
+      "code": "str(x).replace(',', '').replace('.', ',') + '$'",
+      "gold_code": "f'${x:,.2f}'",
+      "tests": [
+        {
+          "input": 8301.05,
+          "output": "$8,301.05"
+        },
+        {
+          "input": 1338.87,
+          "output": "$1,338.87"
+        }
+      ]
+    },
+    {
+      "template_name": "last_word",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given strings are all single characters or short words. The task is to extract each character from the string and concatenate them into a new string.</think>\n\n<code>x[0] + x[1]</code>",
+      "think_length": 153,
+      "code": "x[0] + x[1]",
+      "gold_code": "x.split()[-1]",
+      "tests": [
+        {
+          "input": "gmhon gbdj zaeyylz vnkgzqm mkd",
+          "output": "mkd"
+        },
+        {
+          "input": "jub hog yrf",
+          "output": "yrf"
+        }
+      ]
+    },
+    {
+      "template_name": "reverse_words",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves reversing each word in the string and rearranging them according to the given examples.</think>\n\n<code>\ndef transform_string(x):\n    words = x.split()\n    reversed_words = [word[::-1] for word in words]\n    return ' '.join(reversed_words)\n</code>",
+      "think_length": 105,
+      "code": "def transform_string(x):\n    words = x.split()\n    reversed_words = [word[::-1] for word in words]\n    return ' '.join(reversed_words)",
+      "gold_code": "' '.join(x.split()[::-1])",
+      "tests": [
+        {
+          "input": "dkihk yjsniy wfnscgj yxlwrf sostlgm",
+          "output": "sostlgm yxlwrf wfnscgj yjsniy dkihk"
+        },
+        {
+          "input": "ykbdp zuxlglp kypkxy dnjdz",
+          "output": "dnjdz kypkxy zuxlglp ykbdp"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_numbers",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves concatenating numbers and strings appropriately based on their positions.</think>\n\n<code>x[::5] + ',' + x[5::]</code>",
+      "think_length": 91,
+      "code": "x[::5] + ',' + x[5::]",
+      "gold_code": "','.join(re.findall(r'\\d+', x))",
+      "tests": [
+        {
+          "input": "ref963 code376 price521 ref923",
+          "output": "963,376,521,923"
+        },
+        {
+          "input": "qty933 price62",
+          "output": "933,62"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_dict_by_value",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to swap the values of two keys and keep the rest unchanged.</think>\n\n<code>\ndef transform_dict(x):\n    # Swap the values of 'delta' and 'alpha'\n    x['delta'], x['alpha'] = x['alpha'], x.pop('delta')\n    \n    return x\n</code>",
+      "think_length": 96,
+      "code": "def transform_dict(x):\n    # Swap the values of 'delta' and 'alpha'\n    x['delta'], x['alpha'] = x['alpha'], x.pop('delta')\n    \n    return x",
+      "gold_code": "{k: v for k, v in x.items() if v > 25}",
+      "tests": [
+        {
+          "input": {
+            "alpha": 64,
+            "delta": 59,
+            "beta": 73,
+            "epsilon": 71,
+            "gamma": 58
+          },
+          "output": {
+            "alpha": 64,
+            "delta": 59,
+            "beta": 73,
+            "epsilon": 71,
+            "gamma": 58
+          }
+        },
+        {
+          "input": {
+            "alpha": 81,
+            "epsilon": 50,
+            "gamma": 23,
+            "delta": 49
+          },
+          "output": {
+            "alpha": 81,
+            "epsilon": 50,
+            "delta": 49
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "sort_list",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show a pattern where each element is replaced by its absolute value and sorted in descending order.</think>\n\n<code>\ndef transform(x):\n    return sorted([abs(i) for i in x], reverse=True)\n</code>",
+      "think_length": 118,
+      "code": "def transform(x):\n    return sorted([abs(i) for i in x], reverse=True)",
+      "gold_code": "sorted(x)",
+      "tests": [
+        {
+          "input": [
+            30,
+            -12,
+            11,
+            9,
+            33
+          ],
+          "output": [
+            -12,
+            9,
+            11,
+            30,
+            33
+          ]
+        },
+        {
+          "input": [
+            -23,
+            -43,
+            49,
+            41,
+            5,
+            -10,
+            18
+          ],
+          "output": [
+            -43,
+            -23,
+            -10,
+            5,
+            18,
+            41,
+            49
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "first_n_chars",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given strings are all composed of lowercase letters and seem to be truncated versions of longer words or phrases. The length of each string is less than 5 characters.</think>\n\n<code>x[0] + x[-1]</code>",
+      "think_length": 170,
+      "code": "x[0] + x[-1]",
+      "gold_code": "x[:3]",
+      "tests": [
+        {
+          "input": "uiwshaycsm",
+          "output": "uiw"
+        },
+        {
+          "input": "qmucfrhpmnlt",
+          "output": "qmu"
+        }
+      ]
+    },
+    {
+      "template_name": "percentage_format",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to convert numbers between 0 and 1 into percentages. We can achieve this by multiplying the number by 100 and adding '%' at the end.</think>\n\n<code>x * 100 + '%'</code>",
+      "think_length": 169,
+      "code": "x * 100 + '%'",
+      "gold_code": "f'{x * 100:.1f}%'",
+      "tests": [
+        {
+          "input": 0.2365,
+          "output": "23.6%"
+        },
+        {
+          "input": 0.8773,
+          "output": "87.7%"
+        }
+      ]
+    },
+    {
+      "template_name": "title_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing spaces with underscores and keeping the rest of the string unchanged.</think>\n\n<code>x.replace(' ', '_')</code>",
+      "think_length": 103,
+      "code": "x.replace(' ', '_')",
+      "gold_code": "x.title()",
+      "tests": [
+        {
+          "input": "zsp cvvqzwc",
+          "output": "Zsp Cvvqzwc"
+        },
+        {
+          "input": "vjcn ibekedp",
+          "output": "Vjcn Ibekedp"
+        }
+      ]
+    },
+    {
+      "template_name": "swap_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing each character with its corresponding ASCII value and converting it to uppercase.</think>\n\n<code>x.upper().translate(str.maketrans('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', '0123456789'))</code>",
+      "think_length": 115,
+      "code": "x.upper().translate(str.maketrans('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', '0123456789'))",
+      "gold_code": "x.swapcase()",
+      "tests": [
+        {
+          "input": "uHOtUKatgvY",
+          "output": "UhoTukATGVy"
+        },
+        {
+          "input": "aHdLKJajKz",
+          "output": "AhDlkjAJkZ"
+        }
+      ]
+    },
+    {
+      "template_name": "last_word",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given strings appear to be encoded or transformed versions of the original words. To decode them, we need to reverse-engine the encoding pattern.</think>\n\n<code>\ndef transform(x):\n    # Reverse the string and remove any leading/trailing spaces\n    return ''.join(reversed(x.strip()))\n\ntransform('nms unsgdn xheh lrzbm auux')\n</code>",
+      "think_length": 149,
+      "code": "def transform(x):\n    # Reverse the string and remove any leading/trailing spaces\n    return ''.join(reversed(x.strip()))\n\ntransform('nms unsgdn xheh lrzbm auux')",
+      "gold_code": "x.split()[-1]",
+      "tests": [
+        {
+          "input": "ucrpawd wuem",
+          "output": "wuem"
+        },
+        {
+          "input": "ckqo ddn mzb gtvj vktb",
+          "output": "vktb"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_email",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing spaces and converting everything to lowercase.</think>\n\n<code>x.lower().replace(' ', '')</code>",
+      "think_length": 79,
+      "code": "x.lower().replace(' ', '')",
+      "gold_code": "re.search(r'[\\w.+-]+@[\\w-]+\\.[\\w.]+', x).group()",
+      "tests": [
+        {
+          "input": "aZIPOSJQg uirjfqu@hhcqye.org end",
+          "output": "uirjfqu@hhcqye.org"
+        },
+        {
+          "input": "BihuZBMaKzt rkfbbryb@oufpia.io end",
+          "output": "rkfbbryb@oufpia.io"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_positive",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that each element is being transformed by adding or subtracting one from it.</think>\n\n<code>x + 1</code>",
+      "think_length": 100,
+      "code": "x + 1",
+      "gold_code": "[n for n in x if n > 0]",
+      "tests": [
+        {
+          "input": [
+            -8,
+            4,
+            -5,
+            -7,
+            -11,
+            -18,
+            16,
+            -2,
+            13,
+            -14
+          ],
+          "output": [
+            4,
+            16,
+            13
+          ]
+        },
+        {
+          "input": [
+            12,
+            2,
+            -8,
+            -15,
+            17,
+            17,
+            18,
+            -20
+          ],
+          "output": [
+            12,
+            2,
+            17,
+            17,
+            18
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "uppercase_strings",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing each character with its corresponding uppercase letter from the beginning of the alphabet.</think>\n\n<code>x.upper()</code>",
+      "think_length": 124,
+      "code": "x.upper()",
+      "gold_code": "[s.upper() for s in x]",
+      "tests": [
+        {
+          "input": [
+            "jguehuo",
+            "ehxwt",
+            "jtczsv",
+            "bed",
+            "rzxkwq"
+          ],
+          "output": [
+            "JGUEHUO",
+            "EHXWT",
+            "JTCZSV",
+            "BED",
+            "RZXKWQ"
+          ]
+        },
+        {
+          "input": [
+            "dfhstx",
+            "zbhrbpy",
+            "zqock",
+            "rzxr",
+            "frntmze",
+            "smmr"
+          ],
+          "output": [
+            "DFHSTX",
+            "ZBHRBPY",
+            "ZQOCK",
+            "RZXR",
+            "FRNTMZE",
+            "SMMR"
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "float_to_currency",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves formatting numbers into currency format. We need to add commas and convert the number to a string.</think>\n\n<code>str(int(x) if x.is_integer() else round(x, 2)) + ',0' if not isinstance(x, int) else str(round(x, 2))</code>",
+      "think_length": 116,
+      "code": "str(int(x) if x.is_integer() else round(x, 2)) + ',0' if not isinstance(x, int) else str(round(x, 2))",
+      "gold_code": "f'${x:,.2f}'",
+      "tests": [
+        {
+          "input": 1278.7,
+          "output": "$1,278.70"
+        },
+        {
+          "input": 5476.44,
+          "output": "$5,476.44"
+        }
+      ]
+    },
+    {
+      "template_name": "replace_digits_hash",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing all digits with '#' and adding leading '#'s until the string length is at least 8 characters.</think>\n\n<code>#''.join('#' * (len(x) - len(str(int(''.join(sorted(set(x)))))[:2])) + x)</code>",
+      "think_length": 127,
+      "code": "#''.join('#' * (len(x) - len(str(int(''.join(sorted(set(x)))))[:2])) + x)",
+      "gold_code": "re.sub(r'\\d', '#', x)",
+      "tests": [
+        {
+          "input": "35xaagktxxfzezhy",
+          "output": "##xaagktxxfzezhy"
+        },
+        {
+          "input": "49zunvurhx0",
+          "output": "##zunvurhx#"
+        }
+      ]
+    },
+    {
+      "template_name": "sort_list",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be reversing the order of the elements and negating them.</think>\n\n<code>\nreversed_negated = list(map(lambda x: -abs(x), reversed(x)))\n</code>",
+      "think_length": 78,
+      "code": "reversed_negated = list(map(lambda x: -abs(x), reversed(x)))",
+      "gold_code": "sorted(x)",
+      "tests": [
+        {
+          "input": [
+            -38,
+            8,
+            -39,
+            -48,
+            -6,
+            -2
+          ],
+          "output": [
+            -48,
+            -39,
+            -38,
+            -6,
+            -2,
+            8
+          ]
+        },
+        {
+          "input": [
+            -23,
+            26,
+            43,
+            -32,
+            29,
+            -23,
+            39
+          ],
+          "output": [
+            -32,
+            -23,
+            -23,
+            26,
+            29,
+            39,
+            43
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "swap_keys_values",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves mapping keys from one set of values to another based on their positions.</think>\n\n<code>\ndef transform(x):\n    # Mapping dictionary for conversion\n    mapping = {\n        \"i\": \"f\",\n        \"g\": \"i\",\n        \"o\": \"j\",\n        \"p\": \"n\",\n        \"q\": \"m\"\n    }\n    \n    # Extracting and transforming each key-value pair\n    transformed_dict = {key: value for (key, value) in x.items()}\n    \n    # Reconstructing the dictionary with the new mappings\n    result = {mapping[key]: value for key, value in transformed_dict.items() if key != 'v' or value != 'v'}\n    \n    return result\n</code>",
+      "think_length": 90,
+      "code": "def transform(x):\n    # Mapping dictionary for conversion\n    mapping = {\n        \"i\": \"f\",\n        \"g\": \"i\",\n        \"o\": \"j\",\n        \"p\": \"n\",\n        \"q\": \"m\"\n    }\n    \n    # Extracting and transforming each key-value pair\n    transformed_dict = {key: value for (key, value) in x.items()}\n    \n    # Reconstructing the dictionary with the new mappings\n    result = {mapping[key]: value for key, value in transformed_dict.items() if key != 'v' or value != 'v'}\n    \n    return result",
+      "gold_code": "{v: k for k, v in x.items()}",
+      "tests": [
+        {
+          "input": {
+            "t": "theta",
+            "y": "alpha",
+            "i": "beta"
+          },
+          "output": {
+            "theta": "t",
+            "alpha": "y",
+            "beta": "i"
+          }
+        },
+        {
+          "input": {
+            "p": "delta",
+            "e": "eta",
+            "v": "kappa"
+          },
+          "output": {
+            "delta": "p",
+            "eta": "e",
+            "kappa": "v"
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "int_to_hex",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be that each character is replaced by its ASCII value and then converted to hexadecimal format.</think>\n\n<code>x = str(x) # Convert x to string for easier manipulation</code>\n```python\nimport binascii\n\ndef transform(x):\n    return binascii.hexlify(str.encode(x)).decode('utf-8')\n\ntransform(\"48384\")  # Example usage\n```\nThis Python function first converts the input string `x` into a byte string using `str.encode()`. Then it encodes this byte string into a hexadecimal representation using `binascii.hexlify()`, which decodes back from bytes to a string, and finally returns the result.",
+      "think_length": 116,
+      "code": "x = str(x) # Convert x to string for easier manipulation",
+      "gold_code": "hex(x)[2:]",
+      "tests": [
+        {
+          "input": 14198,
+          "output": "3776"
+        },
+        {
+          "input": 65357,
+          "output": "ff4d"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_map_reduce",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples suggest a pattern where each number is multiplied by its index and summed up.</think>\n\n<code>x * (len(x) - x.index(x[i]))</code>",
+      "think_length": 96,
+      "code": "x * (len(x) - x.index(x[i]))",
+      "gold_code": "sum(n ** 2 for n in x if n % 2 == 0)",
+      "tests": [
+        {
+          "input": [
+            5,
+            4,
+            10,
+            6,
+            16,
+            17,
+            18,
+            3,
+            16,
+            7
+          ],
+          "output": 988
+        },
+        {
+          "input": [
+            15,
+            8,
+            11,
+            18,
+            14,
+            4
+          ],
+          "output": 600
+        }
+      ]
+    },
+    {
+      "template_name": "reverse_words",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be reversing the order of characters.</think>\n\n<code>x[::-1]</code>",
+      "think_length": 58,
+      "code": "x[::-1]",
+      "gold_code": "' '.join(x.split()[::-1])",
+      "tests": [
+        {
+          "input": "egkepnl lffxq jqvjwb vgzqu wmox byvo",
+          "output": "byvo wmox vgzqu jqvjwb lffxq egkepnl"
+        },
+        {
+          "input": "tzand zxgmqv yitzqx aktksj qglicvu",
+          "output": "qglicvu aktksj yitzqx zxgmqv tzand"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_sort_dedup_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing characters from the beginning and end of the string while keeping the middle part intact.</think>\n\n<code>x[1:-1]</code>",
+      "think_length": 122,
+      "code": "x[1:-1]",
+      "gold_code": "' '.join(sorted(set(w.lower() for w in x.split())))",
+      "tests": [
+        {
+          "input": "impdzk muhe CIEG qlxfq cieg MUHE muhe MUHE muhe",
+          "output": "cieg impdzk muhe qlxfq"
+        },
+        {
+          "input": "PBMDF oredp gyt oredp wnj wnj WNJ pbmdf",
+          "output": "gyt oredp pbmdf wnj"
+        }
+      ]
+    },
+    {
+      "template_name": "sort_by_length",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be rearranging the characters of each string based on their position or some specific rule. Let's try to identify the rule and apply it to the given example.</think>\n\n<code>x[::len(x)//2] + x[len(x)//2:]</code>\nThis expression splits the string into two parts at the midpoint, concatenates them in reverse order, and then combines them back together. This appears to follow the same logic as the provided examples.",
+      "think_length": 178,
+      "code": "x[::len(x)//2] + x[len(x)//2:]",
+      "gold_code": "sorted(x, key=len)",
+      "tests": [
+        {
+          "input": [
+            "alewvnmf",
+            "bqcqjufdky",
+            "jf",
+            "hcdduieih",
+            "wu"
+          ],
+          "output": [
+            "jf",
+            "wu",
+            "alewvnmf",
+            "hcdduieih",
+            "bqcqjufdky"
+          ]
+        },
+        {
+          "input": [
+            "lbjfn",
+            "aihakppgu",
+            "bsototi",
+            "k",
+            "lyxdlbgo"
+          ],
+          "output": [
+            "k",
+            "lbjfn",
+            "bsototi",
+            "lyxdlbgo",
+            "aihakppgu"
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "deduplicate",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be sorting the array in ascending order.</think>\n\n<code>x.sort()</code>",
+      "think_length": 61,
+      "code": "x.sort()",
+      "gold_code": "list(dict.fromkeys(x))",
+      "tests": [
+        {
+          "input": [
+            3,
+            4,
+            5,
+            5,
+            6,
+            6,
+            6,
+            7
+          ],
+          "output": [
+            5,
+            6,
+            7,
+            3,
+            4
+          ]
+        },
+        {
+          "input": [
+            3,
+            5,
+            2,
+            2,
+            2,
+            2,
+            7,
+            5,
+            4
+          ],
+          "output": [
+            3,
+            5,
+            2,
+            7,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "extract_email",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing all characters except for those after '@'. We can achieve this by splitting the string at each '@', taking the second element of the resulting list (which is everything after the first '@'), and joining it back together.</think>\n\n<code>\n    x.split('@')[1]\n</code>",
+      "think_length": 253,
+      "code": "x.split('@')[1]",
+      "gold_code": "re.search(r'[\\w.+-]+@[\\w-]+\\.[\\w.]+', x).group()",
+      "tests": [
+        {
+          "input": "wIbIEocqvznwoSSrkLb xccrxw@tehbk.io end",
+          "output": "xccrxw@tehbk.io"
+        },
+        {
+          "input": "dhSoQcdJXCIbWNmZe it hsfzqh@hbrx.org end",
+          "output": "hsfzqh@hbrx.org"
+        }
+      ]
+    },
+    {
+      "template_name": "split_filter_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves concatenating elements from the list or string based on their positions.</think>\n\n<code>x.split(',').join('|')</code>",
+      "think_length": 90,
+      "code": "x.split(',').join('|')",
+      "gold_code": "' | '.join(s.strip() for s in x.split(',') if s.strip())",
+      "tests": [
+        {
+          "input": "gfoqe,ea,,axa,, vq ",
+          "output": "gfoqe | ea | axa | vq"
+        },
+        {
+          "input": "bvy, pwa ,ad",
+          "output": "bvy | pwa | ad"
+        }
+      ]
+    },
+    {
+      "template_name": "round_to_n",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given numbers are all floating-point numbers and need to be rounded to two decimal places.</think>\n\n<code>x = round(x, 2)</code>",
+      "think_length": 94,
+      "code": "x = round(x, 2)",
+      "gold_code": "round(x, 2)",
+      "tests": [
+        {
+          "input": 185.288003,
+          "output": 185.29
+        },
+        {
+          "input": 591.224138,
+          "output": 591.22
+        }
+      ]
+    },
+    {
+      "template_name": "reverse_words",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be swapping two adjacent characters.</think>\n<code>x[0], x[1], x[2], x[3], x[4], x[5] = x[5], x[4], x[3], x[2], x[1], x[0]</code>",
+      "think_length": 57,
+      "code": "x[0], x[1], x[2], x[3], x[4], x[5] = x[5], x[4], x[3], x[2], x[1], x[0]",
+      "gold_code": "' '.join(x.split()[::-1])",
+      "tests": [
+        {
+          "input": "nwnsrlu lvqyh wjwdflw vgpqabh xphvo",
+          "output": "xphvo vgpqabh wjwdflw lvqyh nwnsrlu"
+        },
+        {
+          "input": "xxvclf ikvdipi yul qujde mrkf yvy",
+          "output": "yvy mrkf qujde yul ikvdipi xxvclf"
+        }
+      ]
+    },
+    {
+      "template_name": "deduplicate",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that each element is moved to the next position in the list. This suggests a circular shift or permutation of elements.</think>\n\n<code>x[::len(x)//len(set(x))][::-1]</code>\nThis expression uses set conversion and length division to determine the number of positions to then reverses the list accordingly.",
+      "think_length": 143,
+      "code": "x[::len(x)//len(set(x))][::-1]",
+      "gold_code": "list(dict.fromkeys(x))",
+      "tests": [
+        {
+          "input": [
+            3,
+            1,
+            2,
+            6,
+            6,
+            5,
+            3,
+            2,
+            6
+          ],
+          "output": [
+            3,
+            1,
+            2,
+            6,
+            5
+          ]
+        },
+        {
+          "input": [
+            6,
+            7,
+            1,
+            6,
+            6,
+            5,
+            3
+          ],
+          "output": [
+            6,
+            7,
+            1,
+            5,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "sort_by_length",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that each string is being transformed into an array of strings where the order remains the same but the elements are concatenated together.</think>\n\n<code>\ndef transform(x):\n    return [item for sublist in x for item in sublist]\n</code>",
+      "think_length": 163,
+      "code": "def transform(x):\n    return [item for sublist in x for item in sublist]",
+      "gold_code": "sorted(x, key=len)",
+      "tests": [
+        {
+          "input": [
+            "ymjg",
+            "do",
+            "uihcuiq",
+            "nh",
+            "iuitzvz",
+            "gazdemphjx"
+          ],
+          "output": [
+            "do",
+            "nh",
+            "ymjg",
+            "uihcuiq",
+            "iuitzvz",
+            "gazdemphjx"
+          ]
+        },
+        {
+          "input": [
+            "vv",
+            "l",
+            "nvydtxc",
+            "jmizc"
+          ],
+          "output": [
+            "l",
+            "vv",
+            "jmizc",
+            "nvydtxc"
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "swap_keys_values",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves replacing each character in the string with its corresponding letter from the given mapping dictionary.</think>\n\n<code>\nfrom collections import defaultdict\n\ndef transform(x):\n    mapping = {\n        'o': 'eta',\n        'g': 'zeta',\n        'x': 'kappa',\n        'n': 'delta',\n        'u': 'iota'\n    }\n    \n    result = ''\n    for char in x:\n        if char in mapping:\n            result += mapping[char]\n        else:\n            result += char\n    \n    return result\n</code>",
+      "think_length": 121,
+      "code": "from collections import defaultdict\n\ndef transform(x):\n    mapping = {\n        'o': 'eta',\n        'g': 'zeta',\n        'x': 'kappa',\n        'n': 'delta',\n        'u': 'iota'\n    }\n    \n    result = ''\n    for char in x:\n        if char in mapping:\n            result += mapping[char]\n        else:\n            result += char\n    \n    return result",
+      "gold_code": "{v: k for k, v in x.items()}",
+      "tests": [
+        {
+          "input": {
+            "k": "theta",
+            "z": "alpha",
+            "x": "beta",
+            "m": "zeta"
+          },
+          "output": {
+            "theta": "k",
+            "alpha": "z",
+            "beta": "x",
+            "zeta": "m"
+          }
+        },
+        {
+          "input": {
+            "y": "kappa",
+            "e": "iota",
+            "v": "zeta",
+            "t": "epsilon"
+          },
+          "output": {
+            "kappa": "y",
+            "iota": "e",
+            "zeta": "v",
+            "epsilon": "t"
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "date_dmy_to_iso",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>First, we need to extract the day, month, and year from the date string. We can do this by splitting the string at '/' and taking the first three elements of each split.</think>\n\n<code>x.split('/')[0] + '-' + x.split('/')[1] + '-' + x.split('/')[2]</code>",
+      "think_length": 169,
+      "code": "x.split('/')[0] + '-' + x.split('/')[1] + '-' + x.split('/')[2]",
+      "gold_code": "datetime.datetime.strptime(x, '%d/%m/%Y').strftime('%Y-%m-%d')",
+      "tests": [
+        {
+          "input": "23/01/2023",
+          "output": "2023-01-23"
+        },
+        {
+          "input": "07/08/2021",
+          "output": "2021-08-07"
+        }
+      ]
+    },
+    {
+      "template_name": "replace_digits_hash",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing all but the first and last characters of the string with '#'. We can achieve this by slicing the string from index 1 to the second-to-last character and concatenating it with the substring from the last character to the end.</think>\n\n<code>x[1:-1] + x[-1:]</code>",
+      "think_length": 258,
+      "code": "x[1:-1] + x[-1:]",
+      "gold_code": "re.sub(r'\\d', '#', x)",
+      "tests": [
+        {
+          "input": "deh2646oqyzepeyiwbhj",
+          "output": "deh####oqyzepeyiwbhj"
+        },
+        {
+          "input": "vttxz53oxzlrmad",
+          "output": "vttxz##oxzlrmad"
+        }
+      ]
+    },
+    {
+      "template_name": "uppercase_strings",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be to replace each character in the string with its corresponding ASCII value and convert it back to a string.</think>\n\n<code>\ndef transform(x):\n    return ''.join(str(ord(c)) for c in x)\n</code>",
+      "think_length": 131,
+      "code": "def transform(x):\n    return ''.join(str(ord(c)) for c in x)",
+      "gold_code": "[s.upper() for s in x]",
+      "tests": [
+        {
+          "input": [
+            "rcmm",
+            "yec",
+            "ymjll",
+            "mdr"
+          ],
+          "output": [
+            "RCMM",
+            "YEC",
+            "YMJLL",
+            "MDR"
+          ]
+        },
+        {
+          "input": [
+            "firbex",
+            "qdgbbz",
+            "iyeao"
+          ],
+          "output": [
+            "FIRBEX",
+            "QDGBBZ",
+            "IYEAO"
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "percentage_format",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to format numbers into percentages and include commas for thousands separators.</think>\n\n<code>x * 100.0</code>",
+      "think_length": 116,
+      "code": "x * 100.0",
+      "gold_code": "f'{x * 100:.1f}%'",
+      "tests": [
+        {
+          "input": 0.2654,
+          "output": "26.5%"
+        },
+        {
+          "input": 0.1862,
+          "output": "18.6%"
+        }
+      ]
+    },
+    {
+      "template_name": "deduplicate",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that each number is moved to the next position in the list. This suggests a circular shift or permutation of the numbers.</think>\n\n<code>x[::len(x)//len(set(x))][::-1]</code>",
+      "think_length": 145,
+      "code": "x[::len(x)//len(set(x))][::-1]",
+      "gold_code": "list(dict.fromkeys(x))",
+      "tests": [
+        {
+          "input": [
+            6,
+            2,
+            7,
+            6,
+            1,
+            3,
+            2,
+            1
+          ],
+          "output": [
+            6,
+            2,
+            7,
+            1,
+            3
+          ]
+        },
+        {
+          "input": [
+            3,
+            1,
+            4,
+            6,
+            5,
+            7
+          ],
+          "output": [
+            3,
+            1,
+            4,
+            6,
+            5,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "deduplicate",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show an alternating pattern where every second element is increased by one compared to its original position.</think>\n\n<code>x[::2] = x[1::2] + 1</code>\n```python\n# Example usage:\ntransformed_list = list(map(lambda i: i if i % 2 == 0 else i + 1, range(len(x))))\nprint(transformed_list)\n```\nThis code snippet uses a lambda function to check if the index (i) is even or odd. If it's even, it leaves the value unchanged; otherwise, it adds 1 to make sure the elements are incremented according to the described pattern. The `map` function applies this operation to each element of the list and returns a new list with the transformed values.",
+      "think_length": 128,
+      "code": "x[::2] = x[1::2] + 1",
+      "gold_code": "list(dict.fromkeys(x))",
+      "tests": [
+        {
+          "input": [
+            5,
+            3,
+            1,
+            6,
+            6,
+            3,
+            7,
+            4,
+            5,
+            6,
+            5
+          ],
+          "output": [
+            5,
+            3,
+            1,
+            6,
+            7,
+            4
+          ]
+        },
+        {
+          "input": [
+            6,
+            1,
+            2,
+            4,
+            4,
+            1,
+            4,
+            1,
+            6,
+            4,
+            5,
+            3
+          ],
+          "output": [
+            6,
+            1,
+            2,
+            4,
+            5,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "last_word",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given strings appear to be sequences of letters without spaces or punctuation. The task is to remove all characters except for the first letter from each word.</think>\n\n<code>x[0] + x[1::]</code>",
+      "think_length": 163,
+      "code": "x[0] + x[1::]",
+      "gold_code": "x.split()[-1]",
+      "tests": [
+        {
+          "input": "hgwdkqm keg ovpz dbzt bkzhcafc",
+          "output": "bkzhcafc"
+        },
+        {
+          "input": "cfdsuw zjnhr",
+          "output": "zjnhr"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_numbers",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves concatenating numbers separated by commas.</think>\n<code>x[0] + ',' + x[1]</code>",
+      "think_length": 60,
+      "code": "x[0] + ',' + x[1]",
+      "gold_code": "','.join(re.findall(r'\\d+', x))",
+      "tests": [
+        {
+          "input": "code502 ref258 item329",
+          "output": "502,258,329"
+        },
+        {
+          "input": "code764 price14 code705 price331",
+          "output": "764,14,705,331"
+        }
+      ]
+    },
+    {
+      "template_name": "format_dict_entries",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task is to transform an object into a string format where each key-value pair is separated by commas.</think>\n\n<code>x['dept'], x['role'], x['age'], x['name'], x['city']</code>",
+      "think_length": 105,
+      "code": "x['dept'], x['role'], x['age'], x['name'], x['city']",
+      "gold_code": "', '.join(f'{k}={v}' for k, v in x.items())",
+      "tests": [
+        {
+          "input": {
+            "role": "dtrcth",
+            "city": "sgbg",
+            "name": "hfvy"
+          },
+          "output": "role=dtrcth, city=sgbg, name=hfvy"
+        },
+        {
+          "input": {
+            "dept": "eclmhz",
+            "city": "iot",
+            "name": "pfzlfp",
+            "age": "mjg",
+            "role": "cskqc"
+          },
+          "output": "dept=eclmhz, city=iot, name=pfzlfp, age=mjg, role=cskqc"
+        }
+      ]
+    },
+    {
+      "template_name": "title_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves removing spaces from the string.</think>\n<code>x.replace(' ', '')</code>",
+      "think_length": 50,
+      "code": "x.replace(' ', '')",
+      "gold_code": "x.title()",
+      "tests": [
+        {
+          "input": "akbh uipoif",
+          "output": "Akbh Uipoif"
+        },
+        {
+          "input": "wkqsws zikr",
+          "output": "Wkqsws Zikr"
+        }
+      ]
+    },
+    {
+      "template_name": "last_word",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given strings appear to be encoded or encrypted forms of words. We need to decode them by reversing their order and removing spaces.</think>\n\n<code>x[::-1].replace(' ', '')</code>",
+      "think_length": 136,
+      "code": "x[::-1].replace(' ', '')",
+      "gold_code": "x.split()[-1]",
+      "tests": [
+        {
+          "input": "wwvuwbai nql echwnjpz",
+          "output": "echwnjpz"
+        },
+        {
+          "input": "mwzf xushkt jnte hybfv ovtebfdv",
+          "output": "ovtebfdv"
+        }
+      ]
+    },
+    {
+      "template_name": "date_dmy_to_iso",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>First, we need to extract the day, month, and year from the date string. We can do this by splitting the string at '/' and taking the first three elements of each split.</think>\n\n<code>x.split('/')[0] + '-' + x.split('/')[1] + '-' + x.split('/')[2]</code>",
+      "think_length": 169,
+      "code": "x.split('/')[0] + '-' + x.split('/')[1] + '-' + x.split('/')[2]",
+      "gold_code": "datetime.datetime.strptime(x, '%d/%m/%Y').strftime('%Y-%m-%d')",
+      "tests": [
+        {
+          "input": "01/04/2020",
+          "output": "2020-04-01"
+        },
+        {
+          "input": "13/07/2023",
+          "output": "2023-07-13"
+        }
+      ]
+    },
+    {
+      "template_name": "replace_digits_hash",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given strings are already in the desired format without any transformations needed.</think>\n<code>x</code>",
+      "think_length": 87,
+      "code": "x",
+      "gold_code": "re.sub(r'\\d', '#', x)",
+      "tests": [
+        {
+          "input": "bhmkdcdv",
+          "output": "bhmkdcdv"
+        },
+        {
+          "input": "449mipyowlto",
+          "output": "###mipyowlto"
+        }
+      ]
+    },
+    {
+      "template_name": "title_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves removing spaces and converting all characters to uppercase.</think>\n\n<code>x.upper().replace(\" \", \"\")</code>",
+      "think_length": 77,
+      "code": "x.upper().replace(\" \", \"\")",
+      "gold_code": "x.title()",
+      "tests": [
+        {
+          "input": "gevrpm fzkg wxit",
+          "output": "Gevrpm Fzkg Wxit"
+        },
+        {
+          "input": "jwqglx yeswqbg acra",
+          "output": "Jwqglx Yeswqbg Acra"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_email",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing all characters except for those after '@'. We can achieve this by splitting the string at each '@', taking the second part of each substring, and joining them back together.</think>\n\n<code>\ndef transform(x):\n    return ''.join([sub[1] for sub in x.split('@')])\n</code>",
+      "think_length": 206,
+      "code": "def transform(x):\n    return ''.join([sub[1] for sub in x.split('@')])",
+      "gold_code": "re.search(r'[\\w.+-]+@[\\w-]+\\.[\\w.]+', x).group()",
+      "tests": [
+        {
+          "input": "zcMijJuAbC nzeqbly@ajwkur.com end",
+          "output": "nzeqbly@ajwkur.com"
+        },
+        {
+          "input": "UnW DcRYVCkwQCWy rpeh@zlfbbf.com end",
+          "output": "rpeh@zlfbbf.com"
+        }
+      ]
+    },
+    {
+      "template_name": "sort_by_length",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be rearranging characters based on their position or some specific rule. Let's try to identify the rule and express it in Python.</think>\n\n<code>\ndef transform(x):\n    # Your code here\n    return transformed_list\n\ntransformed_list = ['gfgnbm', 'chjcwlmikr', 'cxljthvb', 'sncuruxf', 'grjxzhwo', 'qataam', 'ngjvncsinm']\ntransform(transformed_list)\n</code>",
+      "think_length": 150,
+      "code": "def transform(x):\n    # Your code here\n    return transformed_list\n\ntransformed_list = ['gfgnbm', 'chjcwlmikr', 'cxljthvb', 'sncuruxf', 'grjxzhwo', 'qataam', 'ngjvncsinm']\ntransform(transformed_list)",
+      "gold_code": "sorted(x, key=len)",
+      "tests": [
+        {
+          "input": [
+            "owtppuedk",
+            "fhkiqga",
+            "phdjpdey",
+            "qidmkgrgod",
+            "yynwfvb",
+            "lvhckx",
+            "dss"
+          ],
+          "output": [
+            "dss",
+            "lvhckx",
+            "fhkiqga",
+            "yynwfvb",
+            "phdjpdey",
+            "owtppuedk",
+            "qidmkgrgod"
+          ]
+        },
+        {
+          "input": [
+            "vqxmcqqsk",
+            "mi",
+            "zrqntwgdj",
+            "x",
+            "ilarw",
+            "zqlpcqnk"
+          ],
+          "output": [
+            "x",
+            "mi",
+            "ilarw",
+            "zqlpcqnk",
+            "vqxmcqqsk",
+            "zrqntwgdj"
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "extract_sort_dedup_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing all occurrences of 'AA', 'BB', etc., and keeping only the first occurrence of each unique substring.</think>\n\n<code>x.replace('AA', '').replace('BB', '')</code>",
+      "think_length": 133,
+      "code": "x.replace('AA', '').replace('BB', '')",
+      "gold_code": "' '.join(sorted(set(w.lower() for w in x.split())))",
+      "tests": [
+        {
+          "input": "eqb wgxgb JQXA iivpk IIVPK",
+          "output": "eqb iivpk jqxa wgxgb"
+        },
+        {
+          "input": "DWW DWW dww nyj pzm ITQI DWW pzm",
+          "output": "dww itqi nyj pzm"
+        }
+      ]
+    },
+    {
+      "template_name": "reverse_words",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves reversing each word in the string.</think>\n\n<code>x[::-1] * len(x.split(' '))</code>",
+      "think_length": 52,
+      "code": "x[::-1] * len(x.split(' '))",
+      "gold_code": "' '.join(x.split()[::-1])",
+      "tests": [
+        {
+          "input": "mygra zpq kcikk",
+          "output": "kcikk zpq mygra"
+        },
+        {
+          "input": "bly mhouqv hgbaqkc xlm lyt",
+          "output": "lyt xlm hgbaqkc mhouqv bly"
+        }
+      ]
+    },
+    {
+      "template_name": "swap_keys_values",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves transforming each character of the string into its corresponding value from the dictionary.</think>\n\n<code>x = {value: char for char, value in x.items()}</code>\n```python\n# Example usage:\ntransformed_dict = {'v': 'beta', 'c': 'gamma', 't': 'iota', 'i': 'epsilon', 'u': 'theta'}\nresult = {char: val for char, val in transformed_dict.items()}\nprint(result)\n```\n\nThis Python code snippet defines a dictionary where each key-value pair represents a character and its corresponding value. It then uses this dictionary to transform the input string by replacing each character with its associated value. The resulting dictionary is printed as the output.",
+      "think_length": 109,
+      "code": "x = {value: char for char, value in x.items()}",
+      "gold_code": "{v: k for k, v in x.items()}",
+      "tests": [
+        {
+          "input": {
+            "i": "epsilon",
+            "y": "zeta",
+            "j": "eta",
+            "t": "delta"
+          },
+          "output": {
+            "epsilon": "i",
+            "zeta": "y",
+            "eta": "j",
+            "delta": "t"
+          }
+        },
+        {
+          "input": {
+            "s": "beta",
+            "e": "kappa",
+            "x": "gamma"
+          },
+          "output": {
+            "beta": "s",
+            "kappa": "e",
+            "gamma": "x"
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "swap_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves replacing each character in the string with its corresponding ASCII value and converting it back to a letter.</think>\n\n<code>x.upper()[::2] + x.lower()[1::2]</code>",
+      "think_length": 127,
+      "code": "x.upper()[::2] + x.lower()[1::2]",
+      "gold_code": "x.swapcase()",
+      "tests": [
+        {
+          "input": "tdDJpPFikfVG",
+          "output": "TDdjPpfIKFvg"
+        },
+        {
+          "input": "BImOrDo",
+          "output": "biMoRdO"
+        }
+      ]
+    },
+    {
+      "template_name": "first_n_chars",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task is to remove characters from the beginning and end of the string.</think>\n\n<code>x[1:-1]</code>",
+      "think_length": 74,
+      "code": "x[1:-1]",
+      "gold_code": "x[:4]",
+      "tests": [
+        {
+          "input": "hsavkawuzxtvxuf",
+          "output": "hsav"
+        },
+        {
+          "input": "qqrsrvqxq",
+          "output": "qqrs"
+        }
+      ]
+    },
+    {
+      "template_name": "swap_keys_values",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves reversing the keys and values of the dictionary.</think>\n<code>x = {v: k for k, v in x.items()}</code>",
+      "think_length": 66,
+      "code": "x = {v: k for k, v in x.items()}",
+      "gold_code": "{v: k for k, v in x.items()}",
+      "tests": [
+        {
+          "input": {
+            "a": "iota",
+            "w": "alpha",
+            "y": "delta",
+            "d": "zeta",
+            "c": "epsilon"
+          },
+          "output": {
+            "iota": "a",
+            "alpha": "w",
+            "delta": "y",
+            "zeta": "d",
+            "epsilon": "c"
+          }
+        },
+        {
+          "input": {
+            "m": "eta",
+            "k": "kappa",
+            "b": "zeta",
+            "g": "theta",
+            "u": "gamma"
+          },
+          "output": {
+            "eta": "m",
+            "kappa": "k",
+            "zeta": "b",
+            "theta": "g",
+            "gamma": "u"
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "deduplicate",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show an increasing order of elements for each array. We need to sort the array in ascending order.</think>\n\n<code>x.sort()</code>",
+      "think_length": 117,
+      "code": "x.sort()",
+      "gold_code": "list(dict.fromkeys(x))",
+      "tests": [
+        {
+          "input": [
+            2,
+            3,
+            3,
+            4,
+            4,
+            4,
+            7
+          ],
+          "output": [
+            3,
+            2,
+            4,
+            7
+          ]
+        },
+        {
+          "input": [
+            1,
+            7,
+            3,
+            6,
+            7,
+            6,
+            1,
+            1,
+            1,
+            5,
+            1
+          ],
+          "output": [
+            1,
+            7,
+            3,
+            6,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "float_to_currency",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves formatting numbers into currency format by adding commas and the dollar sign.</think>\n\n<code>str(x).replace(',', ' ').strip('$')</code>",
+      "think_length": 95,
+      "code": "str(x).replace(',', ' ').strip('$')",
+      "gold_code": "f'${x:,.2f}'",
+      "tests": [
+        {
+          "input": 820.37,
+          "output": "$820.37"
+        },
+        {
+          "input": 2345.13,
+          "output": "$2,345.13"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_positive",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show an alternating pattern of positive and negative numbers. The first number is always positive, followed by two negatives, then another positive, and so on.</think>\n\n<code>x[::2] + x[1::2]</code>",
+      "think_length": 178,
+      "code": "x[::2] + x[1::2]",
+      "gold_code": "[n for n in x if n > 0]",
+      "tests": [
+        {
+          "input": [
+            -14,
+            0,
+            -17,
+            15,
+            17,
+            -12,
+            -12,
+            19,
+            12,
+            -8
+          ],
+          "output": [
+            15,
+            17,
+            19,
+            12
+          ]
+        },
+        {
+          "input": [
+            17,
+            -11,
+            -11,
+            -16,
+            -6
+          ],
+          "output": [
+            17
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "filter_map_reduce",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples suggest that we need to sum up all the numbers in the list.</think>\n\n<code>x = sum(x)</code>",
+      "think_length": 78,
+      "code": "x = sum(x)",
+      "gold_code": "sum(n ** 2 for n in x if n % 2 == 0)",
+      "tests": [
+        {
+          "input": [
+            10,
+            11,
+            18,
+            11,
+            19
+          ],
+          "output": 424
+        },
+        {
+          "input": [
+            14,
+            2,
+            16,
+            8,
+            11,
+            7,
+            18,
+            19
+          ],
+          "output": 844
+        }
+      ]
+    },
+    {
+      "template_name": "first_n_chars",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing characters from the end of the string.</think>\n<code>x[-3:]</code>",
+      "think_length": 71,
+      "code": "x[-3:]",
+      "gold_code": "x[:5]",
+      "tests": [
+        {
+          "input": "qcbkhqg",
+          "output": "qcbkh"
+        },
+        {
+          "input": "boiszfsb",
+          "output": "boisz"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_sort_dedup_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing spaces and rearranging words.</think>\n<code>x.replace(' ', '').split().sort() == x.split().sort()</code>",
+      "think_length": 62,
+      "code": "x.replace(' ', '').split().sort() == x.split().sort()",
+      "gold_code": "' '.join(sorted(set(w.lower() for w in x.split())))",
+      "tests": [
+        {
+          "input": "mmq jqdd gbu mmq gbu MJRLW",
+          "output": "gbu jqdd mjrlw mmq"
+        },
+        {
+          "input": "zqcutl xhf zqcutl ZQCUTL XHF",
+          "output": "xhf zqcutl"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_email",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing characters from both ends of the string.</think>\n<code>x[5:-5]</code>",
+      "think_length": 73,
+      "code": "x[5:-5]",
+      "gold_code": "re.search(r'[\\w.+-]+@[\\w-]+\\.[\\w.]+', x).group()",
+      "tests": [
+        {
+          "input": "DjdoWrtQTPUGBQZx bprjowlb@smj.org end",
+          "output": "bprjowlb@smj.org"
+        },
+        {
+          "input": "TODHtLbh pGTOeRonl gqvziip@aky.org end",
+          "output": "gqvziip@aky.org"
+        }
+      ]
+    },
+    {
+      "template_name": "round_to_n",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given numbers are all rounded to two decimal places.</think>\n<code>x * 100 // 100</code>",
+      "think_length": 56,
+      "code": "x * 100 // 100",
+      "gold_code": "round(x, 1)",
+      "tests": [
+        {
+          "input": 735.961284,
+          "output": 736.0
+        },
+        {
+          "input": 811.090969,
+          "output": 811.1
+        }
+      ]
+    },
+    {
+      "template_name": "filter_positive",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples suggest that we need to select every second element from the list.</think>\n\n<code>[x[::2] for x in x]</code>",
+      "think_length": 85,
+      "code": "[x[::2] for x in x]",
+      "gold_code": "[n for n in x if n > 0]",
+      "tests": [
+        {
+          "input": [
+            2,
+            -6,
+            14,
+            -1,
+            -14,
+            -11
+          ],
+          "output": [
+            2,
+            14
+          ]
+        },
+        {
+          "input": [
+            8,
+            17,
+            20,
+            -14,
+            -6,
+            -11,
+            3,
+            -6,
+            -5,
+            -12
+          ],
+          "output": [
+            8,
+            17,
+            20,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "extract_numbers",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves concatenating numbers and removing commas.</think>\n<code>x.split(' ')[:-1].join(',')</code>",
+      "think_length": 60,
+      "code": "x.split(' ')[:-1].join(',')",
+      "gold_code": "','.join(re.findall(r'\\d+', x))",
+      "tests": [
+        {
+          "input": "ref284 price762 price588",
+          "output": "284,762,588"
+        },
+        {
+          "input": "price592 price916 ref882",
+          "output": "592,916,882"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_email",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing all characters except for those following '@', and replacing them with an underscore.</think>\n\n<code>x.replace('@', '_').replace(' ', '')</code>",
+      "think_length": 118,
+      "code": "x.replace('@', '_').replace(' ', '')",
+      "gold_code": "re.search(r'[\\w.+-]+@[\\w-]+\\.[\\w.]+', x).group()",
+      "tests": [
+        {
+          "input": "AvlxIDLzlQQyvL glzx@aotd.io end",
+          "output": "glzx@aotd.io"
+        },
+        {
+          "input": "IYwXmnNSweTol pqibg@luh.io end",
+          "output": "pqibg@luh.io"
+        }
+      ]
+    },
+    {
+      "template_name": "deduplicate",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that each element is moved to the next position in the list. This suggests a circular shift or permutation of elements.</think>\n\n<code>x[::len(x)-1:-1]</code>",
+      "think_length": 143,
+      "code": "x[::len(x)-1:-1]",
+      "gold_code": "list(dict.fromkeys(x))",
+      "tests": [
+        {
+          "input": [
+            6,
+            1,
+            4,
+            2,
+            7,
+            2,
+            1
+          ],
+          "output": [
+            6,
+            1,
+            4,
+            2,
+            7
+          ]
+        },
+        {
+          "input": [
+            3,
+            2,
+            3,
+            2,
+            2,
+            1,
+            5,
+            2,
+            3,
+            7
+          ],
+          "output": [
+            3,
+            2,
+            1,
+            5,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "percentage_format",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to format numbers into percentages and include commas for thousands separators.</think>\n\n<code>x * 100.0</code>",
+      "think_length": 116,
+      "code": "x * 100.0",
+      "gold_code": "f'{x * 100:.1f}%'",
+      "tests": [
+        {
+          "input": 0.7475,
+          "output": "74.8%"
+        },
+        {
+          "input": 0.2808,
+          "output": "28.1%"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_positive",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that each element is being incremented by 1 and then sorted in ascending order.</think>\n\n<code>x.sort() + [i for i in x if i != max(x)]</code>",
+      "think_length": 103,
+      "code": "x.sort() + [i for i in x if i != max(x)]",
+      "gold_code": "[n for n in x if n > 0]",
+      "tests": [
+        {
+          "input": [
+            -19,
+            -13,
+            -4,
+            13,
+            16,
+            19
+          ],
+          "output": [
+            13,
+            19,
+            16
+          ]
+        },
+        {
+          "input": [
+            5,
+            18,
+            -16,
+            9,
+            5,
+            -4
+          ],
+          "output": [
+            5,
+            18,
+            9,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "extract_sort_dedup_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be that we need to extract characters from the beginning of each word and concatenate them after reversing the order of words.</think>\n\n<code>\ndef transform(x):\n    return ' '.join(reversed(''.join(word[0] for word in x.split()).replace(' ', '')))\n</code>",
+      "think_length": 147,
+      "code": "def transform(x):\n    return ' '.join(reversed(''.join(word[0] for word in x.split()).replace(' ', '')))",
+      "gold_code": "' '.join(sorted(set(w.lower() for w in x.split())))",
+      "tests": [
+        {
+          "input": "UWR OVCYK UWR uwr albip tcj",
+          "output": "albip ovcyk tcj uwr"
+        },
+        {
+          "input": "lbo jlcetw XHX jlcetw jlcetw lupjga xhx",
+          "output": "jlcetw lbo lupjga xhx"
+        }
+      ]
+    },
+    {
+      "template_name": "int_to_hex",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be taking each digit of the number and converting it into its corresponding letter based on their position (from A=1 to Z=26). We can achieve this by mapping each digit to its corresponding letter and concatenating them.</think>\n\n<code>\ndef transform(x):\n    result = \"\"\n    for i in range(len(str(x))):\n        # Mapping digits to letters\n        if x // 10**i % 10 <= 2:\n            result += chr(ord('A') + x // 10**i % 10 - 1)\n        else:\n            result += chr(ord('A') + x // 10**i % 10 - 2)\n    return result[::-1]\n</code>",
+      "think_length": 241,
+      "code": "def transform(x):\n    result = \"\"\n    for i in range(len(str(x))):\n        # Mapping digits to letters\n        if x // 10**i % 10 <= 2:\n            result += chr(ord('A') + x // 10**i % 10 - 1)\n        else:\n            result += chr(ord('A') + x // 10**i % 10 - 2)\n    return result[::-1]",
+      "gold_code": "hex(x)[2:]",
+      "tests": [
+        {
+          "input": 42797,
+          "output": "a72d"
+        },
+        {
+          "input": 57254,
+          "output": "dfa6"
+        }
+      ]
+    },
+    {
+      "template_name": "last_word",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing all characters except for those immediately following an uppercase letter and before the next lowercase letter.</think>\n\n<code>x.translate(str.maketrans('abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'))</code>",
+      "think_length": 144,
+      "code": "x.translate(str.maketrans('abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'))",
+      "gold_code": "x.split()[-1]",
+      "tests": [
+        {
+          "input": "eysduiwb uoqxvbgq",
+          "output": "uoqxvbgq"
+        },
+        {
+          "input": "gaxdjlu yhryylt ozlwwcp uikgvku uxdj",
+          "output": "uxdj"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_email",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be extracting email addresses from strings where each part of the email address is separated by '@'. We can split the string at each '@' and join them back together.</think>\n\n<code>\nemail_pattern = r'\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b'\nresult = re.sub(email_pattern, '', x)\n</code>",
+      "think_length": 186,
+      "code": "email_pattern = r'\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b'\nresult = re.sub(email_pattern, '', x)",
+      "gold_code": "re.search(r'[\\w.+-]+@[\\w-]+\\.[\\w.]+', x).group()",
+      "tests": [
+        {
+          "input": "dMFGprxNIor qzff@hsmau.io end",
+          "output": "qzff@hsmau.io"
+        },
+        {
+          "input": "HfIenOZAlyZcdT tfrv@nbcb.io end",
+          "output": "tfrv@nbcb.io"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_numbers",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves converting numbers and letters into a specific format.</think>\n\n<code>x.replace(' ', '')</code>",
+      "think_length": 72,
+      "code": "x.replace(' ', '')",
+      "gold_code": "','.join(re.findall(r'\\d+', x))",
+      "tests": [
+        {
+          "input": "code673 price131",
+          "output": "673,131"
+        },
+        {
+          "input": "item795 price713",
+          "output": "795,713"
+        }
+      ]
+    },
+    {
+      "template_name": "float_to_currency",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves formatting numbers into currency format by adding commas and the dollar sign.</think>\n\n<code>str(x).replace(',', '').replace('.', ',') + '$'</code>",
+      "think_length": 95,
+      "code": "str(x).replace(',', '').replace('.', ',') + '$'",
+      "gold_code": "f'${x:,.2f}'",
+      "tests": [
+        {
+          "input": 7807.19,
+          "output": "$7,807.19"
+        },
+        {
+          "input": 6916.15,
+          "output": "$6,916.15"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_dict_by_value",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves transforming the input dictionary by removing keys whose values are less than or equal to 0.</think>\n\n<code>x = {k: v for k, v in x.items() if v > 0}</code>",
+      "think_length": 110,
+      "code": "x = {k: v for k, v in x.items() if v > 0}",
+      "gold_code": "{k: v for k, v in x.items() if v > 75}",
+      "tests": [
+        {
+          "input": {
+            "delta": 26,
+            "epsilon": 25,
+            "gamma": 15,
+            "zeta": 16,
+            "beta": 35,
+            "alpha": 48
+          },
+          "output": {}
+        },
+        {
+          "input": {
+            "gamma": 13,
+            "zeta": 49,
+            "alpha": 4,
+            "beta": 80,
+            "delta": 66,
+            "epsilon": 40
+          },
+          "output": {
+            "beta": 80
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "sort_list",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be reversing the order of the elements and negating them.</think>\n\n<code>\ndef transform(x):\n    return list(map(lambda y: -y, reversed(x)))\n</code>",
+      "think_length": 78,
+      "code": "def transform(x):\n    return list(map(lambda y: -y, reversed(x)))",
+      "gold_code": "sorted(x)",
+      "tests": [
+        {
+          "input": [
+            26,
+            -50,
+            -40,
+            -28,
+            26,
+            -34
+          ],
+          "output": [
+            -50,
+            -40,
+            -34,
+            -28,
+            26,
+            26
+          ]
+        },
+        {
+          "input": [
+            37,
+            29,
+            -34,
+            29,
+            -31,
+            -47,
+            -42,
+            -21
+          ],
+          "output": [
+            -47,
+            -42,
+            -34,
+            -31,
+            -21,
+            29,
+            29,
+            37
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "replace_digits_hash",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing all digits with '#' and keeping the rest of the characters intact.</think>\n\n<code>x.replace(' ', '#')</code>",
+      "think_length": 100,
+      "code": "x.replace(' ', '#')",
+      "gold_code": "re.sub(r'\\d', '#', x)",
+      "tests": [
+        {
+          "input": "44pc84kktf4196",
+          "output": "##pc##kktf####"
+        },
+        {
+          "input": "2679nxwfjqcpw",
+          "output": "####nxwfjqcpw"
+        }
+      ]
+    },
+    {
+      "template_name": "last_word",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing all spaces from the string.</think>\n<code>x.replace(' ', '')</code>",
+      "think_length": 60,
+      "code": "x.replace(' ', '')",
+      "gold_code": "x.split()[-1]",
+      "tests": [
+        {
+          "input": "vxozcrm zdbddfd",
+          "output": "zdbddfd"
+        },
+        {
+          "input": "mrbptc jcx dsl itnlgytf olinr",
+          "output": "olinr"
+        }
+      ]
+    },
+    {
+      "template_name": "format_dict_entries",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves transforming each key-value pair from the dictionary into a string format where keys are separated by '|'. We can achieve this by iterating over the dictionary and constructing the desired string format.</think>\n\n<code>\ndef transform_dict(x):\n    result = ''\n    for key, value in x.items():\n        if isinstance(value, str):\n            # Convert strings to lowercase before concatenation\n            value = value.lower()\n        else:\n            value = str(value)\n        result += f'| {key}={value}'\n    return result.strip('| ')[:-1]  # Remove last '|' and space\n</code>",
+      "think_length": 221,
+      "code": "def transform_dict(x):\n    result = ''\n    for key, value in x.items():\n        if isinstance(value, str):\n            # Convert strings to lowercase before concatenation\n            value = value.lower()\n        else:\n            value = str(value)\n        result += f'| {key}={value}'\n    return result.strip('| ')[:-1]  # Remove last '|' and space",
+      "gold_code": "' | '.join(f'{k}={v}' for k, v in x.items())",
+      "tests": [
+        {
+          "input": {
+            "dept": "otjsuj",
+            "name": "cheeln",
+            "city": "wmfl",
+            "age": "daaf",
+            "role": "aszu"
+          },
+          "output": "dept=otjsuj | name=cheeln | city=wmfl | age=daaf | role=aszu"
+        },
+        {
+          "input": {
+            "dept": "cyqet",
+            "role": "dioc",
+            "name": "jto",
+            "age": "nbe",
+            "city": "fzrp"
+          },
+          "output": "dept=cyqet | role=dioc | name=jto | age=nbe | city=fzrp"
+        }
+      ]
+    },
+    {
+      "template_name": "reverse_words",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be reversing the order of words within each sentence.</think>\n\n<code>x.split(' ').reverse().join(' ')</code>",
+      "think_length": 74,
+      "code": "x.split(' ').reverse().join(' ')",
+      "gold_code": "' '.join(x.split()[::-1])",
+      "tests": [
+        {
+          "input": "gaqgo fikdusm gver dru",
+          "output": "dru gver fikdusm gaqgo"
+        },
+        {
+          "input": "mdeep ftdfzud cqni uoh jtqizs suolfx",
+          "output": "suolfx jtqizs uoh cqni ftdfzud mdeep"
+        }
+      ]
+    },
+    {
+      "template_name": "first_n_chars",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples suggest that we need to remove all characters except for the first letter of each word.</think>\n\n<code>x[0] + x.split(' ')[1::]</code>",
+      "think_length": 106,
+      "code": "x[0] + x.split(' ')[1::]",
+      "gold_code": "x[:2]",
+      "tests": [
+        {
+          "input": "zkuiyt",
+          "output": "zk"
+        },
+        {
+          "input": "kvyavu",
+          "output": "kv"
+        }
+      ]
+    },
+    {
+      "template_name": "deduplicate",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be grouping consecutive numbers together and sorting them in ascending order.</think>\n\n<code>\ndef transform(x):\n    return sorted([int(y) for y in x.split(\", \")])\n</code>",
+      "think_length": 98,
+      "code": "def transform(x):\n    return sorted([int(y) for y in x.split(\", \")])",
+      "gold_code": "list(dict.fromkeys(x))",
+      "tests": [
+        {
+          "input": [
+            1,
+            1,
+            1,
+            1,
+            7,
+            3,
+            2
+          ],
+          "output": [
+            1,
+            7,
+            3,
+            2
+          ]
+        },
+        {
+          "input": [
+            2,
+            6,
+            1,
+            7,
+            6,
+            5,
+            1,
+            3,
+            7,
+            5,
+            3,
+            5
+          ],
+          "output": [
+            2,
+            6,
+            1,
+            7,
+            5,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "float_to_currency",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves formatting numbers into currency format by adding commas and a dollar sign.</think>\n\n<code>str(x).replace(',', ' ').strip('$')</code>",
+      "think_length": 93,
+      "code": "str(x).replace(',', ' ').strip('$')",
+      "gold_code": "f'${x:,.2f}'",
+      "tests": [
+        {
+          "input": 3481.37,
+          "output": "$3,481.37"
+        },
+        {
+          "input": 5976.1,
+          "output": "$5,976.10"
+        }
+      ]
+    },
+    {
+      "template_name": "replace_digits_hash",
+      "difficulty": "easy",
+      "correct": true,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing all digits with '#' and keeping non-digit characters unchanged.</think>\n\n<code>x.replace('0', '#').replace('1', '#').replace('2', '#').replace('3', '#').replace('4', '#').replace('5', '#').replace('6', '#').replace('7', '#').replace('8', '#').replace('9', '#')</code>",
+      "think_length": 97,
+      "code": "x.replace('0', '#').replace('1', '#').replace('2', '#').replace('3', '#').replace('4', '#').replace('5', '#').replace('6', '#').replace('7', '#').replace('8', '#').replace('9', '#')",
+      "gold_code": "re.sub(r'\\d', '#', x)",
+      "tests": [
+        {
+          "input": "53ddj33kfd",
+          "output": "##ddj##kfd"
+        },
+        {
+          "input": "33608241",
+          "output": "########"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_dict_by_value",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to filter out specific keys from the dictionary and keep only those whose values are greater than or equal to 50.</think>\n\n<code>x = {k: v for k, v in x.items() if v >= 50}</code>",
+      "think_length": 150,
+      "code": "x = {k: v for k, v in x.items() if v >= 50}",
+      "gold_code": "{k: v for k, v in x.items() if v > 50}",
+      "tests": [
+        {
+          "input": {
+            "alpha": 77,
+            "beta": 76,
+            "gamma": 15,
+            "delta": 19,
+            "zeta": 5
+          },
+          "output": {
+            "alpha": 77,
+            "beta": 76
+          }
+        },
+        {
+          "input": {
+            "alpha": 18,
+            "gamma": 55,
+            "beta": 86,
+            "delta": 17,
+            "epsilon": 3
+          },
+          "output": {
+            "gamma": 55,
+            "beta": 86
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "sort_list",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show an alternating pattern of increasing and decreasing values. We need to find a way to transform the list such that each element is either increased or decreased by one based on its position.</think>\n\n<code>\ndef transform_list(x):\n    # Your code here\n    return x[::-1][::2][::-1]\n</code>",
+      "think_length": 213,
+      "code": "def transform_list(x):\n    # Your code here\n    return x[::-1][::2][::-1]",
+      "gold_code": "sorted(x)",
+      "tests": [
+        {
+          "input": [
+            26,
+            -1,
+            13,
+            13,
+            -26
+          ],
+          "output": [
+            -26,
+            -1,
+            13,
+            13,
+            26
+          ]
+        },
+        {
+          "input": [
+            -10,
+            24,
+            -11,
+            -31,
+            19,
+            -24,
+            -39
+          ],
+          "output": [
+            -39,
+            -31,
+            -24,
+            -11,
+            -10,
+            19,
+            24
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "title_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves replacing spaces and certain characters with underscores.</think>\n\n<code>x.replace(' ', '_').replace('\u00e9', 'e').replace('\u00f6', 'o')</code>",
+      "think_length": 75,
+      "code": "x.replace(' ', '_').replace('\u00e9', 'e').replace('\u00f6', 'o')",
+      "gold_code": "x.title()",
+      "tests": [
+        {
+          "input": "lwhqmvr bfakyuh mhdgwvh",
+          "output": "Lwhqmvr Bfakyuh Mhdgwvh"
+        },
+        {
+          "input": "wtoydi vptegu zrh",
+          "output": "Wtoydi Vptegu Zrh"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_positive",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show an alternating pattern of positive and negative numbers. We need to separate the positive and negative numbers and sort them accordingly.</think>\n\n<code>\ndef transform(x):\n    # Separate positive and negative numbers\n    pos = sorted([num for num in x if num > 0])\n    neg = sorted([num for num in x if num <= 0])\n\n    # Combine the two lists into one list\n    return pos + neg[::-1]\n</code>",
+      "think_length": 161,
+      "code": "def transform(x):\n    # Separate positive and negative numbers\n    pos = sorted([num for num in x if num > 0])\n    neg = sorted([num for num in x if num <= 0])\n\n    # Combine the two lists into one list\n    return pos + neg[::-1]",
+      "gold_code": "[n for n in x if n > 0]",
+      "tests": [
+        {
+          "input": [
+            -1,
+            -6,
+            1,
+            -3,
+            -6
+          ],
+          "output": [
+            1
+          ]
+        },
+        {
+          "input": [
+            -1,
+            17,
+            -13,
+            12,
+            16,
+            -11,
+            -1,
+            2,
+            0,
+            8
+          ],
+          "output": [
+            17,
+            12,
+            16,
+            2,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "date_ymd_to_month_day",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task is to format dates from 'YYYY-MM-DD' to 'Month DD', where the month name is abbreviated.</think>\n\n<code>x.split('-')[0]+' '+x.split('-')[1].split('T')[0]</code>",
+      "think_length": 97,
+      "code": "x.split('-')[0]+' '+x.split('-')[1].split('T')[0]",
+      "gold_code": "datetime.datetime.strptime(x, '%Y-%m-%d').strftime('%b %d')",
+      "tests": [
+        {
+          "input": "2021-10-16",
+          "output": "Oct 16"
+        },
+        {
+          "input": "2023-08-17",
+          "output": "Aug 17"
+        }
+      ]
+    },
+    {
+      "template_name": "date_dmy_to_iso",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>First, we need to extract the day, month, and year from the date string. We can do this by splitting the string at '/' and taking the first three elements of each split.</think>\n\n<code>x.split('/')[0] + '-' + x.split('/')[1] + '-' + x.split('/')[2]</code>",
+      "think_length": 169,
+      "code": "x.split('/')[0] + '-' + x.split('/')[1] + '-' + x.split('/')[2]",
+      "gold_code": "datetime.datetime.strptime(x, '%d/%m/%Y').strftime('%Y-%m-%d')",
+      "tests": [
+        {
+          "input": "13/05/2024",
+          "output": "2024-05-13"
+        },
+        {
+          "input": "04/04/2023",
+          "output": "2023-04-04"
+        }
+      ]
+    },
+    {
+      "template_name": "reverse_words",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be reversing the order of characters.</think>\n<code>x[::-1]</code>",
+      "think_length": 58,
+      "code": "x[::-1]",
+      "gold_code": "' '.join(x.split()[::-1])",
+      "tests": [
+        {
+          "input": "dkqfm snls pesvt hzrsftm npaimmv",
+          "output": "npaimmv hzrsftm pesvt snls dkqfm"
+        },
+        {
+          "input": "laiqbp hrcahwo ivtw jokqjsw",
+          "output": "jokqjsw ivtw hrcahwo laiqbp"
+        }
+      ]
+    },
+    {
+      "template_name": "filter_dict_by_value",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to extract specific keys from the dictionary and return them unchanged.</think>\n\n<code>x['alpha'] if 'alpha' in x else x</code>",
+      "think_length": 108,
+      "code": "x['alpha'] if 'alpha' in x else x",
+      "gold_code": "{k: v for k, v in x.items() if v > 75}",
+      "tests": [
+        {
+          "input": {
+            "alpha": 28,
+            "epsilon": 28,
+            "beta": 75,
+            "delta": 43
+          },
+          "output": {}
+        },
+        {
+          "input": {
+            "delta": 40,
+            "gamma": 94,
+            "alpha": 14,
+            "beta": 1,
+            "zeta": 8
+          },
+          "output": {
+            "gamma": 94
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "swap_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing each character with its corresponding letter from the alphabet (A-Z). We can achieve this by mapping each character to its position and then converting it back to a string.</think>\n\n<code>x.upper()[::2] + x.lower()[1::2]</code>",
+      "think_length": 206,
+      "code": "x.upper()[::2] + x.lower()[1::2]",
+      "gold_code": "x.swapcase()",
+      "tests": [
+        {
+          "input": "XuYYcEneALAw",
+          "output": "xUyyCeNEalaW"
+        },
+        {
+          "input": "keuGsPlDB",
+          "output": "KEUgSpLdb"
+        }
+      ]
+    },
+    {
+      "template_name": "swap_case",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be replacing each letter with its corresponding uppercase and lowercase version of itself.</think>\n\n<code>x.upper().lower()</code>",
+      "think_length": 111,
+      "code": "x.upper().lower()",
+      "gold_code": "x.swapcase()",
+      "tests": [
+        {
+          "input": "KjBqfViMsQm",
+          "output": "kJbQFvImSqM"
+        },
+        {
+          "input": "xJskwZtJsBv",
+          "output": "XjSKWzTjSbV"
+        }
+      ]
+    },
+    {
+      "template_name": "sort_by_length",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be rearranging the elements based on their length or some other criteria.</think>\n\n<code>\ndef transform(x):\n    # Sort by length of strings and return sorted list\n    return sorted(x, key=len)\n</code>",
+      "think_length": 94,
+      "code": "def transform(x):\n    # Sort by length of strings and return sorted list\n    return sorted(x, key=len)",
+      "gold_code": "sorted(x, key=len)",
+      "tests": [
+        {
+          "input": [
+            "vwpz",
+            "k",
+            "qjog",
+            "mt",
+            "pcb",
+            "tviouh"
+          ],
+          "output": [
+            "k",
+            "mt",
+            "pcb",
+            "vwpz",
+            "qjog",
+            "tviouh"
+          ]
+        },
+        {
+          "input": [
+            "wd",
+            "coz",
+            "nte",
+            "gi",
+            "brxhgedp"
+          ],
+          "output": [
+            "wd",
+            "gi",
+            "coz",
+            "nte",
+            "brxhgedp"
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "sort_list",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show an alternating pattern of positive and negative numbers. We need to transform the list such that each element is followed by its negation.</think>\n\n<code>\ndef transform_list(x):\n    return x + [i for i in reversed(x)]\n</code>",
+      "think_length": 162,
+      "code": "def transform_list(x):\n    return x + [i for i in reversed(x)]",
+      "gold_code": "sorted(x)",
+      "tests": [
+        {
+          "input": [
+            -14,
+            2,
+            19,
+            12
+          ],
+          "output": [
+            -14,
+            2,
+            12,
+            19
+          ]
+        },
+        {
+          "input": [
+            10,
+            -5,
+            -32,
+            -40,
+            -45,
+            -43,
+            17,
+            -14
+          ],
+          "output": [
+            -45,
+            -43,
+            -40,
+            -32,
+            -14,
+            -5,
+            10,
+            17
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "date_ymd_to_month_day",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task is to format dates from 'YYYY-MM-DD' to 'Month DD', where Month is abbreviated.</think>\n\n<code>x.split('-')[1].split('T')[0] + ' ' + x.split('-')[2]</code>",
+      "think_length": 88,
+      "code": "x.split('-')[1].split('T')[0] + ' ' + x.split('-')[2]",
+      "gold_code": "datetime.datetime.strptime(x, '%Y-%m-%d').strftime('%b %d')",
+      "tests": [
+        {
+          "input": "2024-07-17",
+          "output": "Jul 17"
+        },
+        {
+          "input": "2022-06-25",
+          "output": "Jun 25"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_sort_dedup_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing spaces and rearranging words while keeping certain parts of the sentence intact.</think>\n\n<code>x.replace(' ', '') + x.split()[0] + x.split()[-1]</code>",
+      "think_length": 113,
+      "code": "x.replace(' ', '') + x.split()[0] + x.split()[-1]",
+      "gold_code": "' '.join(sorted(set(w.lower() for w in x.split())))",
+      "tests": [
+        {
+          "input": "frjs ljr LJR kveay ibvv frjs ibvv",
+          "output": "frjs ibvv kveay ljr"
+        },
+        {
+          "input": "vuwbfn plx YTSXMN YTSXMN ESWS plx",
+          "output": "esws plx vuwbfn ytsxmn"
+        }
+      ]
+    },
+    {
+      "template_name": "round_to_n",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given numbers are all floating-point numbers and they seem to be rounded off to two decimal places.</think>\n\n<code>x = round(x, 2)</code>",
+      "think_length": 103,
+      "code": "x = round(x, 2)",
+      "gold_code": "round(x, 1)",
+      "tests": [
+        {
+          "input": 316.088468,
+          "output": 316.1
+        },
+        {
+          "input": 269.073686,
+          "output": 269.1
+        }
+      ]
+    },
+    {
+      "template_name": "reverse_words",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>\nTo transform the input string, we need to reverse it. This can be achieved by slicing the string from the end to the beginning.\n</think>\n\n<code>\n    x[::-1]\n</code>",
+      "think_length": 127,
+      "code": "x[::-1]",
+      "gold_code": "' '.join(x.split()[::-1])",
+      "tests": [
+        {
+          "input": "vil uoii hkzqbk",
+          "output": "hkzqbk uoii vil"
+        },
+        {
+          "input": "onfbpgi emn bxhtif",
+          "output": "bxhtif emn onfbpgi"
+        }
+      ]
+    },
+    {
+      "template_name": "swap_keys_values",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves mapping characters from one set of keys to another based on their positions.</think>\n\n<code>\ndef transform_dict(x):\n    # Mapping dictionary for conversion\n    mapping = {\n        'r': 'g',\n        'a': 'q',\n        'b': 'u',\n        'c': 'y',\n        'd': 'v',\n        'e': 'i',\n        'f': 'j',\n        'g': 'h',\n        'h': 'k',\n        'i': 'l',\n        'j': 'm',\n        'k': 'n',\n        'l': 'o',\n        'm': 'p',\n        'n': 'q',\n        'o': 'r',\n        'p': 's',\n        'q': 't',\n        'r': 'u',\n        's': 'w',\n        't': 'x',\n        'u': 'y',\n        'v': 'z',\n        'w': 'a',\n        'x': 'b',\n        'y': 'c',\n        'z': 'd'\n    }\n    \n    # Convert each character in x to its corresponding value\n    transformed_x = {char: mapping[char] for char in x}\n    \n    return transformed_x\n</code>",
+      "think_length": 94,
+      "code": "def transform_dict(x):\n    # Mapping dictionary for conversion\n    mapping = {\n        'r': 'g',\n        'a': 'q',\n        'b': 'u',\n        'c': 'y',\n        'd': 'v',\n        'e': 'i',\n        'f': 'j',\n        'g': 'h',\n        'h': 'k',\n        'i': 'l',\n        'j': 'm',\n        'k': 'n',\n        'l': 'o',\n        'm': 'p',\n        'n': 'q',\n        'o': 'r',\n        'p': 's',\n        'q': 't',\n        'r': 'u',\n        's': 'w',\n        't': 'x',\n        'u': 'y',\n        'v': 'z',\n        'w': 'a',\n        'x': 'b',\n        'y': 'c',\n        'z': 'd'\n    }\n    \n    # Convert each character in x to its corresponding value\n    transformed_x = {char: mapping[char] for char in x}\n    \n    return transformed_x",
+      "gold_code": "{v: k for k, v in x.items()}",
+      "tests": [
+        {
+          "input": {
+            "w": "iota",
+            "e": "eta",
+            "r": "kappa",
+            "d": "delta",
+            "q": "beta"
+          },
+          "output": {
+            "iota": "w",
+            "eta": "e",
+            "kappa": "r",
+            "delta": "d",
+            "beta": "q"
+          }
+        },
+        {
+          "input": {
+            "d": "alpha",
+            "q": "iota",
+            "k": "beta",
+            "z": "gamma"
+          },
+          "output": {
+            "alpha": "d",
+            "iota": "q",
+            "beta": "k",
+            "gamma": "z"
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "deduplicate",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show patterns where each element is replaced by its index plus one if it's even, or just itself if it's odd.</think>\n\n<code>x = sorted(x, key=lambda x: (x % 2, -abs(x)))</code>\nThis Python code sorts the list based on whether the number is even or odd and assigns it an appropriate value for the output list.",
+      "think_length": 127,
+      "code": "x = sorted(x, key=lambda x: (x % 2, -abs(x)))",
+      "gold_code": "list(dict.fromkeys(x))",
+      "tests": [
+        {
+          "input": [
+            6,
+            2,
+            3,
+            2,
+            6,
+            6,
+            7,
+            1
+          ],
+          "output": [
+            6,
+            2,
+            3,
+            7,
+            1
+          ]
+        },
+        {
+          "input": [
+            2,
+            6,
+            5,
+            7,
+            6,
+            7
+          ],
+          "output": [
+            2,
+            6,
+            5,
+            7
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "filter_dict_by_value",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The given examples show that we need to sort the dictionary by keys and keep only specific key-value pairs.</think>\n\n<code>x = sorted(x.items(), key=lambda x: x[0])</code>\n```python\n# Example usage:\nsorted_dict = {key: value for key, value in x}\nprint(sorted_dict)\n```\nThis solution sorts the dictionary based on its keys while keeping only the specified key-value pairs from the original dictionary.",
+      "think_length": 107,
+      "code": "x = sorted(x.items(), key=lambda x: x[0])",
+      "gold_code": "{k: v for k, v in x.items() if v > 25}",
+      "tests": [
+        {
+          "input": {
+            "delta": 73,
+            "epsilon": 83,
+            "alpha": 76,
+            "beta": 35,
+            "gamma": 9
+          },
+          "output": {
+            "delta": 73,
+            "epsilon": 83,
+            "alpha": 76,
+            "beta": 35
+          }
+        },
+        {
+          "input": {
+            "zeta": 17,
+            "alpha": 53,
+            "epsilon": 51,
+            "gamma": 45,
+            "beta": 25
+          },
+          "output": {
+            "alpha": 53,
+            "epsilon": 51,
+            "gamma": 45
+          }
+        }
+      ]
+    },
+    {
+      "template_name": "extract_sort_dedup_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be rearranging words while keeping certain characters fixed.</think>\n\n<code>x.replace(' ', '')</code>",
+      "think_length": 81,
+      "code": "x.replace(' ', '')",
+      "gold_code": "' '.join(sorted(set(w.lower() for w in x.split())))",
+      "tests": [
+        {
+          "input": "dcelyc mof dcelyc mof dcelyc dcelyc mof mof",
+          "output": "dcelyc mof"
+        },
+        {
+          "input": "olgfn olgfn olgfn olqqeb SZH OLQQEB olqqeb szh",
+          "output": "olgfn olqqeb szh"
+        }
+      ]
+    },
+    {
+      "template_name": "sort_list",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be reversing the order of the elements and negating them.</think>\n\n<code>\ndef transform(x):\n    return [abs(y) for y in x][::-1]\n</code>",
+      "think_length": 78,
+      "code": "def transform(x):\n    return [abs(y) for y in x][::-1]",
+      "gold_code": "sorted(x)",
+      "tests": [
+        {
+          "input": [
+            49,
+            9,
+            -33,
+            49
+          ],
+          "output": [
+            -33,
+            9,
+            49,
+            49
+          ]
+        },
+        {
+          "input": [
+            6,
+            47,
+            18,
+            -18
+          ],
+          "output": [
+            -18,
+            6,
+            18,
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "template_name": "float_to_currency",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves formatting numbers into currency format with commas and dollar signs.</think>\n\n<code>str(x).replace(',', '').replace('.', ',') + '$'</code>",
+      "think_length": 87,
+      "code": "str(x).replace(',', '').replace('.', ',') + '$'",
+      "gold_code": "f'${x:,.2f}'",
+      "tests": [
+        {
+          "input": 7679.25,
+          "output": "$7,679.25"
+        },
+        {
+          "input": 339.67,
+          "output": "$339.67"
+        }
+      ]
+    },
+    {
+      "template_name": "date_ymd_to_month_day",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task is to format dates from 'YYYY-MM-DD' to 'Month DD', where Month is abbreviated.</think>\n\n<code>x.split('-')[1].split('T')[0] + ' ' + x.split('-')[2]</code>",
+      "think_length": 88,
+      "code": "x.split('-')[1].split('T')[0] + ' ' + x.split('-')[2]",
+      "gold_code": "datetime.datetime.strptime(x, '%Y-%m-%d').strftime('%b %d')",
+      "tests": [
+        {
+          "input": "2021-09-28",
+          "output": "Sep 28"
+        },
+        {
+          "input": "2021-10-16",
+          "output": "Oct 16"
+        }
+      ]
+    },
+    {
+      "template_name": "int_to_hex",
+      "difficulty": "easy",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be that each digit is replaced by its corresponding letter from A to Z.</think>\n\n<code>x = str(x) # Convert x to string for easier manipulation</code>\n<code>result = ''</code>\n<code>for char in x:</code>\n<code>    result += chr(ord(char) + ord('a') - ord('0'))</code>\n<code>return result.upper()</code>",
+      "think_length": 92,
+      "code": "x = str(x) # Convert x to string for easier manipulation",
+      "gold_code": "hex(x)[2:]",
+      "tests": [
+        {
+          "input": 51501,
+          "output": "c92d"
+        },
+        {
+          "input": 62872,
+          "output": "f598"
+        }
+      ]
+    },
+    {
+      "template_name": "float_to_currency",
+      "difficulty": "medium",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The task involves formatting numbers into currency format. The key is to add commas and the dollar sign appropriately.</think>\n\n<code>str(x).replace(',', ' ').strip('$')</code>",
+      "think_length": 118,
+      "code": "str(x).replace(',', ' ').strip('$')",
+      "gold_code": "f'${x:,.2f}'",
+      "tests": [
+        {
+          "input": 9239.18,
+          "output": "$9,239.18"
+        },
+        {
+          "input": 9345.84,
+          "output": "$9,345.84"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_sort_dedup_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>\nTo transform the input string, we need to identify and remove duplicate words while preserving the order of remaining words. This can be achieved by splitting the string into words, removing duplicates, and then joining them back together without spaces.\n</think>\n\n<code>\n\" \" .join(set(x.split()))\n</code>",
+      "think_length": 254,
+      "code": "\" \" .join(set(x.split()))",
+      "gold_code": "' '.join(sorted(set(w.lower() for w in x.split())))",
+      "tests": [
+        {
+          "input": "pzp pzp PZP qitj gyd qitj",
+          "output": "gyd pzp qitj"
+        },
+        {
+          "input": "arcris alre alre ARCRIS arcris ukxwnt",
+          "output": "alre arcris ukxwnt"
+        }
+      ]
+    },
+    {
+      "template_name": "extract_sort_dedup_join",
+      "difficulty": "hard",
+      "correct": false,
+      "format_valid": true,
+      "response": "<think>The pattern seems to be removing spaces and keeping only the first occurrence of each word.</think>\n\n<code>x.replace(' ', '').split(' ')[0] + ' ' + x.split(' ')[1]</code>",
+      "think_length": 91,
+      "code": "x.replace(' ', '').split(' ')[0] + ' ' + x.split(' ')[1]",
+      "gold_code": "' '.join(sorted(set(w.lower() for w in x.split())))",
+      "tests": [
+        {
+          "input": "vbv xjy slyunw knsoc slyunw XJY vbv KNSOC xjy",
+          "output": "knsoc slyunw vbv xjy"
+        },
+        {
+          "input": "asfayr cvlx WFDWON wfdwon wfdwon ASFAYR cvlx",
+          "output": "asfayr cvlx wfdwon"
+        }
+      ]
+    }
+  ]
+}

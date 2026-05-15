@@ -3,6 +3,7 @@ __pycache__/
 .venv/
 data/*.json
 data/*.jsonl
+!data/eval_results_*.json
 checkpoints/
 wandb/
 *.egg-info/
